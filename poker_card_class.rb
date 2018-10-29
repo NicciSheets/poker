@@ -37,7 +37,7 @@ class Card
     :jack  => 11,
     :queen => 12,
     :king  => 13,
-    :ace => 14
+    :ace   => 14
   	}
 
 
@@ -73,6 +73,12 @@ attr_reader :value, :suit
       return nil
     end
     POKER_VALUES_STRING[self.value] > POKER_VALUES_STRING[other_card.value]
+  end
+ 
+
+# combines the two strings for Cards
+  def to_s
+    VALUE_STRING[value] + SUIT_STRING[suit]
   end
 end
 

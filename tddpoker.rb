@@ -46,6 +46,10 @@ class TddPoker < Minitest::Test
     	assert_equal(true, x.higher_than?(x2))
     end
 
+    def test_combines_value_and_suit
+    	x = Card.new(:two, :spades)
+    	assert_equal("2S", x.to_s)
+    end
 end
 
  # def test_other_card_passes_returns_0
