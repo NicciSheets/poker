@@ -8,7 +8,7 @@ class Card
     :spades   => "S"
   	}
 	
-    RANK_STRING = {
+    VALUE_STRING = {
     :two   => "2",
     :three => "3",
     :four  => "4",
@@ -40,29 +40,39 @@ class Card
     :ace => 14
   	}
 
+
+attr_reader :value, :suit
+
+# initializes class Card with a value and a suit
+  def initialize(value, suit)
+    @value, @suit = value, suit
+  end
+
+
+# returns the suits of class Card
   def self.suits
     SUIT_STRING.keys
   end
 
-  def self.ranks 
-  	RANK_STRING.keys
-  end
-  
-  attr_reader :rank, :suit
 
-  def initialize(rank, suit)
-    @rank, @suit = rank, suit
+# returns the ranks of class Card
+  def self.values
+  	VALUE_STRING.keys
   end
 
+
+# checks equality of self card with other card
   def ==(other_card)
-    (self.suit == other_card.suit) && (self.rank == other_card.rank)
+    (self.suit == other_card.suit) && (self.value == other_card.value)
   end
 
+
+# compares the poker ranking of two cards
   def higher_than?(other_card)
-    if POKER_VALUES_STRING[self.rank] == POKER_VALUES_STRING[other_card.rank]
+    if POKER_VALUES_STRING[self.value] == POKER_VALUES_STRING[other_card.value]
       return nil
     end
-    POKER_VALUES_STRING[self.rank] > POKER_VALUES_STRING[other_card.rank]
+    POKER_VALUES_STRING[self.value] > POKER_VALUES_STRING[other_card.value]
   end
 end
 

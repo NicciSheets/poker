@@ -10,10 +10,10 @@ class TddPoker < Minitest::Test
 
     def test_card_value_suit_and_name
     	x = Card.new("2", "S")
-    	assert_equal("2", x.rank)
+    	assert_equal("2", x.value)
     	assert_equal("S", x.suit)
     	x = Card.new(:two, :spades)
-    	assert_equal(:two, x.rank)
+    	assert_equal(:two, x.value)
     	assert_equal(:spades, x.suit)
     end
 
@@ -22,8 +22,8 @@ class TddPoker < Minitest::Test
 
     end
 
-    def test_rank
-    	assert_equal([:two, :three, :four, :five, :six, :seven, :eight, :nine, :ten, :jack, :queen, :king, :ace], Card.ranks)
+    def test_card_values
+    	assert_equal([:two, :three, :four, :five, :six, :seven, :eight, :nine, :ten, :jack, :queen, :king, :ace], Card.values)
     end
 
     def test_poker_ranking
