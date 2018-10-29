@@ -49,6 +49,8 @@ class TddPoker < Minitest::Test
     def test_combines_value_and_suit
     	x = Card.new(:two, :spades)
     	assert_equal("2S", x.to_s)
+    	x = Card.new(:king, :spades)
+    	assert_equal("KS", x.to_s)
     end
 end
 
