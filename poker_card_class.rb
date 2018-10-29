@@ -1,14 +1,58 @@
 # card, hand, deck, game rules
 
 class Card
-	attr_reader :rank, :suit, :set
-	def initialize(rank, suit)
-		@rank = "#{rank}"
-		@suit = "#{suit}"
-		@set = "#{rank}#{suit}"
-	end
-
+	SUIT_STRING = {
+    :clubs    => "C",
+    :diamonds => "D",
+    :hearts   => "H",
+    :spades   => "S"
+  	}
 	
+    RANK_STRING = {
+    :two   => "2",
+    :three => "3",
+    :four  => "4",
+    :five  => "5",
+    :six   => "6",
+    :seven => "7",
+    :eight => "8",
+    :nine  => "9",
+    :ten   => "10",
+    :jack  => "J",
+    :queen => "Q",
+    :king  => "K",
+    :ace   => "A"
+	 }
+
+  	RANK_VALUES_STRING = {
+    :two   => 2,
+    :three => 3,
+    :four  => 4,
+    :five  => 5,
+    :six   => 6,
+    :seven => 7,
+    :eight => 8,
+    :nine  => 9,
+    :ten   => 10,
+    :jack  => 11,
+    :queen => 12,
+    :king  => 13,
+    :ace => 14
+  	}
+
+  def self.suits
+    SUIT_STRING.keys
+  end
+
+  def self.ranks 
+  	RANK_STRING.keys
+  end
+  
+  attr_reader :rank, :suit
+
+  def initialize(rank, suit)
+    @rank, @suit = rank, suit
+  end
 end
 
 
