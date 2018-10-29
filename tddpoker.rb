@@ -19,10 +19,17 @@ class TddPoker < Minitest::Test
 
     def test_card_symbols
     	assert_equal([:clubs, :diamonds, :hearts, :spades], Card.suits)
+
     end
 
-    def test_ranks
+    def test_rank
     	assert_equal([:two, :three, :four, :five, :six, :seven, :eight, :nine, :ten, :jack, :queen, :king, :ace], Card.ranks)
+    end
+
+    def test_other_card_fails_returns_1
+    	x = Card.new(:two, :spades)
+    	x2 = Card.new(:three, :spades)
+    	assert_equal(1, x.to_s <=> x2.to_s)
     end
 
 end

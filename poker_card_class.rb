@@ -53,6 +53,11 @@ class Card
   def initialize(rank, suit)
     @rank, @suit = rank, suit
   end
+
+  def ==(other_card)
+    (self.suit == other_card.suit) && (self.rank == other_card.rank)
+  end
+
 end
 
 
