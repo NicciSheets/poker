@@ -24,7 +24,7 @@ class Card
     :ace   => "A"
 	 }
 
-  	RANK_VALUES_STRING = {
+  	POKER_VALUES_STRING = {
     :two   => 2,
     :three => 3,
     :four  => 4,
@@ -58,6 +58,12 @@ class Card
     (self.suit == other_card.suit) && (self.rank == other_card.rank)
   end
 
+  def higher_than?(other_card)
+    if POKER_VALUES_STRING[self.rank] == POKER_VALUES_STRING[other_card.rank]
+      return nil
+    end
+    POKER_VALUES_STRING[self.rank] > POKER_VALUES_STRING[other_card.rank]
+  end
 end
 
 
