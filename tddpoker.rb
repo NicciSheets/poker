@@ -29,6 +29,9 @@ class TddPoker < Minitest::Test
    		x = Card.new(:two, :spades)
    		x2 = Card.new(:two, :spades)
    		assert_equal(true, x==(x2))
+   		x = Card.new(:two, :spades)
+   		x2 = Card.new(:three, :spades)
+   		assert_equal(false, x==(x2))
    	end
 
     def test_poker_ranking
