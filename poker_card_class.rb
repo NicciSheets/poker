@@ -76,7 +76,7 @@ attr_reader :value, :suit
   end
  
 
-# combines the two strings for Cards
+# combines the two strings (value and suit) for Cards
   def to_s
     VALUE_STRING[value] + SUIT_STRING[suit]
   end
