@@ -25,4 +25,8 @@ class Deck
 	def shuffle
 		@cards.shuffle!
 	end
+
+	def deal()
+		p @cards.pop(5)
+	end
 end
