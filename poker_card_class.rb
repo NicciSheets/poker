@@ -49,13 +49,14 @@ attr_reader :value, :suit
   end
 
 
-# returns the suits of class Card
+# returns the card suits of class Card
   def self.suits
     SUIT_STRING.keys
   end
 
 
-# returns the ranks of class Card
+
+# returns the card values of class Card
   def self.values
   	VALUE_STRING.keys
   end

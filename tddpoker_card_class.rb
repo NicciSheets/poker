@@ -1,10 +1,10 @@
 require "minitest/autorun"
 require_relative "poker_card_class.rb"
 
-class TddPoker < Minitest::Test
+class TddPokerCardClass < Minitest::Test
 
 	def test_card_is_a_class
-	 	x = Card.new("2", "S")
+	 	x = Card.new("value", "suit")
         assert_equal(Card, x.class)
     end
 
@@ -53,9 +53,3 @@ class TddPoker < Minitest::Test
     	assert_equal("KS", x.to_s)
     end
 end
-
- # def test_other_card_passes_returns_0
-    # 	x = Card.new(:two, :spades)
-    # 	x = Card.new(:two, :spades) 
-    # 	assert_equal(0, x.to_s <=> x.to_s)
-    # end
