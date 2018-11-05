@@ -25,6 +25,6 @@ class Deck
 	end
 
 	def deal()
-		p @cards.pop(5)
+		@cards.pop(5)
 	end
 end
