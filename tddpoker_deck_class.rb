@@ -9,7 +9,6 @@ class TddPokerDeckClass < Minitest::Test
     end
 
     def test_deck_has_52_cards
-    	assert_equal(52, Deck.all_cards.count)
-    	
+    	assert_equal(52, Deck.all_cards.count)    	
     end
 end
