@@ -25,4 +25,11 @@ class TddPokerDeckClass < Minitest::Test
        	assert_equal(:spades, x[51].suit)
         assert_equal("AS", x[51].to_s)
     end
+
+    def test_cards_shuffle
+    	x = Deck.new()
+    	refute_equal("2C", x.shuffle[0].to_s)
+    	refute_equal("2D", x.shuffle[1].to_s)
+    	refute_equal("AS", x.shuffle[51].to_s)
+    end
 end

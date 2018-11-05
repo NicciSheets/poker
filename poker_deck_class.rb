@@ -22,6 +22,7 @@ class Deck
 		cards
 	end
 
-	# def self.shuffle
-	# end
+	def shuffle
+		@cards.shuffle!
+	end
 end
