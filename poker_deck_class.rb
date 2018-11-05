@@ -6,9 +6,7 @@ class Deck
     	@cards = cards
 	end
 
-
 	attr_accessor :cards
-
 
 	def self.all_cards
 		cards = []
