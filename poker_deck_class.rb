@@ -2,10 +2,13 @@ require_relative "poker_card_class.rb"
 
 class Deck
 
-	def initialize(cards)
-		cards = Deck.all_cards
+	def initialize(cards = Deck.all_cards)
     	@cards = cards
 	end
+
+
+	attr_accessor :cards
+
 
 	def self.all_cards
 		cards = []
@@ -18,4 +21,7 @@ class Deck
 		end
 		cards
 	end
+
+	# def self.shuffle
+	# end
 end
