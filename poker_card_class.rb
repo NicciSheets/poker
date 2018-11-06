@@ -1,6 +1,7 @@
-# card, hand, deck, game rules
+# card, deck, hand
 
 class Card
+
 	SUIT_STRING = {
     :clubs    => "C",
     :diamonds => "D",
@@ -81,6 +82,7 @@ attr_reader :value, :suit
   def to_s
     VALUE_STRING[value] + SUIT_STRING[suit]
   end
+
 end
 
 

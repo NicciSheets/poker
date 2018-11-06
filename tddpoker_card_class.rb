@@ -52,4 +52,5 @@ class TddPokerCardClass < Minitest::Test
     	x = Card.new(:king, :spades)
     	assert_equal("KS", x.to_s)
     end
+    
 end
