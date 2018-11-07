@@ -7,4 +7,11 @@ class TddPokerHandClass < Minitest::Test
 			x = Hand.new()
 			assert_equal(Hand, x.class)
 		end
+
+		def test_hand_is_getting_dealt_card
+			x = Hand.deal
+			assert_equal(1, x.length)
+			
+		end
+
 end

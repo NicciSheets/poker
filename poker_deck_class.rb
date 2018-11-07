@@ -29,9 +29,9 @@ class Deck
 		@cards.shuffle!
 	end
 
-
+# ******may end up doing this in class Hand, 
 # deals 5 cards from the deck
-	def deal()
-		@cards.pop(5)
-	end
+	# def deal
+	# 	@cards.pop(5)
+	# end
 end
