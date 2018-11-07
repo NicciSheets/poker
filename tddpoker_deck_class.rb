@@ -31,8 +31,8 @@ class TddPokerDeckClass < Minitest::Test
     	refute_equal(x, x.shuffle.to_s)
     end
 
-    def test_deals_5_cards
-    	x = Deck.new()
-    	assert_equal(5, x.deal.length)
-    end
+    # def test_deals_5_cards
+    # 	x = Deck.new()
+    # 	assert_equal(5, x.deal.length)
+    # end
 end
