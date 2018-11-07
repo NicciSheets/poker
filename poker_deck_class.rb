@@ -29,9 +29,8 @@ class Deck
 		@cards.shuffle!
 	end
 
-# ******may end up doing this in class Hand, 
-# deals 5 cards from the deck
-	# def deal
-	# 	@cards.pop(5)
-	# end
+# removes (n) elements from the deck and returns them in an array, leaving @cards with the remaining elements 
+	def take(n)
+		@cards.shift(n)
+	end
 end
