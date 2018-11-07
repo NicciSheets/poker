@@ -25,6 +25,9 @@ class TddPokerHandClass < Minitest::Test
 			deck_sorted = Deck.new(cards_sorted)
 			hand_sorted = Hand.deal(deck_sorted)
 			assert_equal(hand.cards, hand_sorted.cards)
+			assert_equal(hand.cards_to_test, hand_sorted.cards_to_test)
+			assert_equal(hand.cards, hand.cards_to_test)
+			assert_equal(hand_sorted.cards, hand_sorted.cards_to_test)
 		end
 
 		def test_cards_dup_creates_duplicates
