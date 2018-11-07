@@ -1,11 +1,12 @@
 require_relative "poker_card_class.rb"
 require_relative "poker_deck_class.rb"
+require_relative "poker_test_hand_class.rb"
 
 class Hand
 
 	def initialize(cards = Deck.new.shuffle)
 		@cards = cards
-		# p @cards.sort_by! {|card| Card::POKER_VALUES_STRING[card.value]}	
+		@cards.sort_by! {|card| Card::POKER_VALUES_STRING[card.value]}	
 	end
 
 	attr_accessor :cards
