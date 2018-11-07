@@ -1,9 +1,7 @@
 require_relative "poker_card_class.rb"
 require_relative "poker_deck_class.rb"
 
-# may need to comment out the @cards_to_test = cards.dup (line 12) and remove :cards_to_test (line 17), if putting through Sinatra 
-
-class Hand  
+class Hand  	
 
 # intializes the Hand class with shuffled cards of the deck
 # cards.sort_by! sorts the cards based upon their poker values
@@ -20,7 +18,29 @@ class Hand
 # used to deal 5 cards into the hand; deck = Deck.all_cards.shuffle
 	def self.deal(deck)
 		Hand.new(deck.take(5))
-   		# p "poker_hand is #{poker_hand} with #{poker_hand.class}"
   	end
+
+  	
+  	def evaluate_hand
+  		if pair?[0]
+  			"pair"
+  		end
+  	end
+
+
+# if the value of 2 cards are the same, returns as true for a pair; uses a different way to iterate through the cards (rather than using a counter)
+  	def pair?
+	    cards.each_with_index do |card, index1|
+	      	(index1+1...cards.length).each do |index2| 
+	      		# p (index1+1...cards.length)
+	        	if card.value == cards[index2].value
+	          		cards_to_test.delete(card)
+	          		cards_to_test.delete(cards[index2])
+	          	return [true, [card, cards[index2]]]
+	        	end
+	     	end
+	    end
+	    [false]
+	end
 end
 

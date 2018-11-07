@@ -45,4 +45,12 @@ class TddPokerHandClass < Minitest::Test
         end
 
 
+        def test_pair?
+        	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
+        	assert_equal(true, hand.pair?[0])
+        	assert_equal(3, hand.cards_to_test.count)
+        	assert_equal("pair", hand.evaluate_hand)
+        	p hand.pair?
+        end
+
 end
