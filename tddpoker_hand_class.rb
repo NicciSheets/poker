@@ -49,6 +49,9 @@ class TddPokerHandClass < Minitest::Test
         	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
         	assert_equal(true, hand.pair?[0])
         	assert_equal(3, hand.cards_to_test.length)
+        	assert_equal("2S", hand.cards_to_test[0].to_s)
+        	assert_equal("5C", hand.cards_to_test[1].to_s)
+        	assert_equal("7C", hand.cards_to_test[2].to_s)
         	assert_equal("pair", hand.evaluate_hand)
         	assert_equal(2, hand.pair?[1].length)
         	assert_equal("8S", hand.pair?[1][0].to_s)
@@ -60,6 +63,7 @@ class TddPokerHandClass < Minitest::Test
         	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
         	assert_equal(true, hand.two_pair?[0])
         	assert_equal(1, hand.cards_to_test.length)
+        	assert_equal("7C", hand.cards_to_test[0].to_s)
         	assert_equal("two pair", hand.evaluate_hand)
         	assert_equal(2, hand.two_pair?[1].length)
         	assert_equal(2, hand.two_pair?[1][0].length)
@@ -79,6 +83,8 @@ class TddPokerHandClass < Minitest::Test
         	hand = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
         	assert_equal(true, hand.three_of_a_kind?[0])
         	assert_equal(2, hand.cards_to_test.length)
+        	assert_equal("3C", hand.cards_to_test[0].to_s)
+        	assert_equal("8S", hand.cards_to_test[1].to_s)
         	assert_equal("three of a kind", hand.evaluate_hand)
         	assert_equal(3, hand.three_of_a_kind?[1].length)
         	assert_equal("2D", hand.three_of_a_kind?[1][0].to_s)
@@ -87,11 +93,11 @@ class TddPokerHandClass < Minitest::Test
         end
 
 
-        def test_four_of_a_kind?
-        	hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-        	assert_equal(true, hand.four_of_a_kind?[0])
-        	assert_equal(1, hand.cards_to_test.length)
-        	assert_equal("four of a kind", hand.evaluate_hand)
-        	assert_equal(4, hand.four_of_a_kind?[1].length)
-        end
+        # def test_four_of_a_kind?
+        # 	hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+        # 	assert_equal(true, hand.four_of_a_kind?[0])
+        # 	assert_equal(1, hand.cards_to_test.length)
+        # 	assert_equal("four of a kind", hand.evaluate_hand)
+        # 	assert_equal(4, hand.four_of_a_kind?[1].length)
+        # end
 end
