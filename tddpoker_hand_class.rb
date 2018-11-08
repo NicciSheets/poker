@@ -61,6 +61,10 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal(2, hand.two_pair?[1].length)
         	assert_equal(2, hand.two_pair?[1][0].length)
         	assert_equal(2, hand.two_pair?[1][1].length)
+        	assert_equal("2C", hand.two_pair?[1][0][0].to_s)
+        	assert_equal("2S", hand.two_pair?[1][0][1].to_s)
+        	assert_equal("8S", hand.two_pair?[1][1][0].to_s)
+        	assert_equal("8C", hand.two_pair?[1][1][1].to_s)
         	x = hand.two_pair?[1][0][0].to_s 
         	y = hand.two_pair?[1][1][0].to_s
         	# this tells me that the first pair has a lower value than the second pair, so the second pair is the highest pair
@@ -74,6 +78,9 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal(2, hand.cards_to_test.length)
         	assert_equal("three of a kind", hand.evaluate_hand)
         	assert_equal(3, hand.three_of_a_kind?[1].length)
+        	assert_equal("2D", hand.three_of_a_kind?[1][0].to_s)
+        	assert_equal("2C", hand.three_of_a_kind?[1][1].to_s)
+        	assert_equal("2S", hand.three_of_a_kind?[1][2].to_s)
         end
 
 end
