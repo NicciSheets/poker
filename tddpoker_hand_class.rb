@@ -48,9 +48,23 @@ class TddPokerHandClass < Minitest::Test
         def test_pair?
         	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
         	assert_equal(true, hand.pair?[0])
-        	assert_equal(3, hand.cards_to_test.count)
+        	assert_equal(3, hand.cards_to_test.length)
         	assert_equal("pair", hand.evaluate_hand)
-        	p hand.pair?
+        	hand.pair?
         end
 
+
+        def test_two_pair?
+        	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
+        	assert_equal(true, hand.two_pair?[0])
+        	assert_equal(1, hand.cards_to_test.length)
+        	assert_equal("two pair", hand.evaluate_hand)
+        	assert_equal(2, hand.two_pair?[1].length)
+        	x = hand.two_pair?[1][0][0] 
+        	y = hand.two_pair?[1][1][0]
+        	# p x.value
+        	# p y.value
+        	# this tells me that the first pair has a lower value than the second pair, so the second pair is the highest pair
+        	assert(true, x.value<y.value)
+        end
 end

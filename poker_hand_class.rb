@@ -22,7 +22,9 @@ class Hand
 
   	
   	def evaluate_hand
-  		if pair?[0]
+  		if two_pair?[0]
+  			"two pair"
+  		else pair?[0]
   			"pair"
   		end
   	end
@@ -31,8 +33,7 @@ class Hand
 # if the value of 2 cards are the same, returns as true for a pair; uses a different way to iterate through the cards (rather than using a counter)
   	def pair?
 	    cards.each_with_index do |card, index1|
-	      	(index1+1...cards.length).each do |index2| 
-	      		# p (index1+1...cards.length)
+	      	(index1+1...cards.length).each do |index2|
 	        	if card.value == cards[index2].value
 	          		cards_to_test.delete(card)
 	          		cards_to_test.delete(cards[index2])
@@ -42,5 +43,24 @@ class Hand
 	    end
 	    [false]
 	end
+
+
+# checks to see if the value of any cards match, and if they do then it shoves them into the pairs array; after the loop runs, if the pair_count == 2, then it returns true for two pair and returns the two card pairs, otherwise it is false
+	def two_pair?
+  		pair_count = 0
+  		pairs = []
+	    cards.each_with_index do |card, index1|
+	      	(index1+1...cards.length).each do |index2|
+	        	if card.value == cards[index2].value
+	        		pair_count += 1
+	        		pairs << [card, cards[index2]]   		
+	          		cards_to_test.delete(card)
+	          		cards_to_test.delete(cards[index2])
+	        	end
+	     	end
+	    end
+	    pair_count == 2 ? [true, pairs] : [false]
+	end
 end
 
+	
