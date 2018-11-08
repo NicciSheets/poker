@@ -50,6 +50,9 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal(true, hand.pair?[0])
         	assert_equal(3, hand.cards_to_test.length)
         	assert_equal("pair", hand.evaluate_hand)
+        	assert_equal(2, hand.pair?[1].length)
+        	assert_equal("8S", hand.pair?[1][0].to_s)
+        	assert_equal("8C", hand.pair?[1][1].to_s)
         end
 
 
