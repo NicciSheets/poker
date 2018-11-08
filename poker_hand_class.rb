@@ -22,7 +22,9 @@ class Hand
 
   	
   	def evaluate_hand
-  		if two_pair?[0]
+  		if three_of_a_kind?[0]
+  			"three of a kind"
+  		elsif two_pair?[0]
   			"two pair"
   		else pair?[0]
   			"pair"
@@ -61,6 +63,30 @@ class Hand
 	    end
 	    pair_count == 2 ? [true, pairs] : [false]
 	end
+
+
+	def three_of_a_kind?
+		cards.each_with_index do |card, index1|
+			matching_cards = [card]
+      		match_count = 1
+	      	(index1+1...cards.length).each do |index2|
+	        	if card.value == cards[index2].value
+	        		match_count += 1
+	        		matching_cards << cards[index2]	          		
+	        	end
+	        end
+	    if match_count == 3
+	    	matching_cards.each do |card|
+	    		cards_to_test.delete(card)
+	    	end
+	    	return [true, matching_cards]
+	    	end
+	    end
+	    [false]
+	end
+	    
 end
+
+
 
 	
