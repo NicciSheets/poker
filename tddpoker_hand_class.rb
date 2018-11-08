@@ -60,11 +60,9 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal(1, hand.cards_to_test.length)
         	assert_equal("two pair", hand.evaluate_hand)
         	assert_equal(2, hand.two_pair?[1].length)
-        	x = hand.two_pair?[1][0][0] 
-        	y = hand.two_pair?[1][1][0]
-        	# p x.value
-        	# p y.value
+        	x = hand.two_pair?[1][0][0].to_s 
+        	y = hand.two_pair?[1][1][0].to_s
         	# this tells me that the first pair has a lower value than the second pair, so the second pair is the highest pair
-        	assert(true, x.value<y.value)
+        	assert_operator x.chr, :<, y.chr
         end
 end
