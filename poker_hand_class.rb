@@ -24,6 +24,8 @@ class Hand
   	def evaluate_hand
   		if four_of_a_kind?[0]
   			"four of a kind"
+  		elsif full_house?[0]
+  			"full house"
   		elsif three_of_a_kind?[0]
   			"three of a kind"
   		elsif two_pair?[0]
@@ -105,6 +107,15 @@ class Hand
 	    	end
 	    end
 	    [false]
+	end
+
+	def full_house?
+		if three_of_a_kind?[0]
+			if cards_to_test[0].value == cards_to_test[1].value
+				return [true, three_of_a_kind?[1], [cards_to_test[0], cards_to_test[1]]]
+			end
+		end
+		[false]
 	end
 end
 

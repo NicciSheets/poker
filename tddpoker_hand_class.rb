@@ -117,8 +117,15 @@ class TddPokerHandClass < Minitest::Test
         def test_full_house?
         	hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
         	assert_equal(true, hand.full_house?[0])
-        	assert_equal(0, hand.cards_to_test.length)
+        	assert_equal(2, hand.cards_to_test.length)
         	assert_equal("full house", hand.evaluate_hand)
-        	assert_equal(5, hand.full_house[1].length)
+        	assert_equal(3, hand.full_house?[1].length)
+        	# p hand.full_house?
+        	# the first array from full_house? returns true, the second array returns the three of a kind, the third array returns the pair
+        	assert_equal("2H", hand.full_house?[1][0].to_s)
+        	assert_equal("2C", hand.full_house?[1][1].to_s)
+        	assert_equal("2S", hand.full_house?[1][2].to_s)
+        	assert_equal("8D", hand.full_house?[2][0].to_s)
+        	assert_equal("8S", hand.full_house?[2][1].to_s)
         end
 end
