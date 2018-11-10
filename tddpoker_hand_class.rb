@@ -127,5 +127,7 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal("2S", hand.full_house?[1][2].to_s)
         	assert_equal("8D", hand.full_house?[2][0].to_s)
         	assert_equal("8S", hand.full_house?[2][1].to_s)
+        	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	assert_equal(false, hand2.full_house?[0])
         end
 end
