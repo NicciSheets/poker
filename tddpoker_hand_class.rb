@@ -130,4 +130,18 @@ class TddPokerHandClass < Minitest::Test
         	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
         	assert_equal(false, hand2.full_house?[0])
         end
+
+        def test_straight?
+        	hand = Hand.new([Card.new(:two, :diamonds), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	assert_equal("straight", hand.evaluate_hand)
+        	# p hand.straight?
+        	assert_equal("2D", hand.straight?[0].to_s)
+        	assert_equal("3C", hand.straight?[1].to_s)
+        	assert_equal("4C", hand.straight?[2].to_s)
+        	assert_equal("5C", hand.straight?[3].to_s)
+        	assert_equal("6C", hand.straight?[4].to_s)
+        	hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	assert_equal(false, hand2.straight?)
+        end
+
 end

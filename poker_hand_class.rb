@@ -20,7 +20,7 @@ class Hand
 		Hand.new(deck.take(5))
   	end
 
-  	
+# this is so I can return a string for each of the definitions, if true
   	def evaluate_hand
   		if four_of_a_kind?[0]
   			"four of a kind"
@@ -28,6 +28,8 @@ class Hand
   			"full house"
   		elsif three_of_a_kind?[0]
   			"three of a kind"
+  		elsif straight?
+  			"straight"
   		elsif two_pair?[0]
   			"two pair"
   		else pair?[0]
@@ -68,6 +70,7 @@ class Hand
 	    pair_count == 2 ? [true, pairs] : [false]
 	end
 
+
 # checks for three cards of same value and puts them into the matching_cards array, returning true for three of a kind
 	def three_of_a_kind?
 		cards.each_with_index do |card, index1|
@@ -88,7 +91,9 @@ class Hand
 	    end
 	    [false]
 	end
-	    
+	
+
+# determines if four cards have the same value and adds to the match_count for each one that matches.  If match_count == 4, it's true for four of a kind.
 	def four_of_a_kind?
 		cards.each_with_index do |card, index1|
 			matching_cards = [card]
@@ -109,6 +114,8 @@ class Hand
 	    [false]
 	end
 
+
+# first it checks criteria for three of a kind and if returns true for that, then checks to see if the 2 cards left in cards_to_test are the same value, if yes, it's a full house
 	def full_house?
 		if three_of_a_kind?[0]
 			if cards_to_test[0].value == cards_to_test[1].value
@@ -117,6 +124,17 @@ class Hand
 		end
 		[false]
 	end
+
+
+	def straight?
+    	cards.each_with_index do |card, index|
+      		next if index + 1 == cards.length
+      		return false unless Card::POKER_VALUES_STRING[cards[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1
+   		end
+ 	end
+
+
+
 end
 
 
