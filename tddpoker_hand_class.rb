@@ -56,6 +56,8 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal(2, hand.pair?[1].length)
         	assert_equal("8S", hand.pair?[1][0].to_s)
         	assert_equal("8C", hand.pair?[1][1].to_s)
+        	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	assert_equal(false, hand2.pair?[0])
         end
 
 
@@ -76,6 +78,8 @@ class TddPokerHandClass < Minitest::Test
         	y = hand.two_pair?[1][1][0].to_s
         	# this tells me that the first pair has a lower value than the second pair, so the second pair is the highest pair
         	assert_operator x.chr, :<, y.chr
+        	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	assert_equal(false, hand2.two_pair?[0])
         end
 
 
@@ -90,6 +94,8 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal("2D", hand.three_of_a_kind?[1][0].to_s)
         	assert_equal("2C", hand.three_of_a_kind?[1][1].to_s)
         	assert_equal("2S", hand.three_of_a_kind?[1][2].to_s)
+        	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	assert_equal(false, hand2.three_of_a_kind?[0])
         end
 
 
@@ -104,5 +110,9 @@ class TddPokerHandClass < Minitest::Test
         	assert_equal("2C", hand.four_of_a_kind?[1][1].to_s)
         	assert_equal("2D", hand.four_of_a_kind?[1][2].to_s)
         	assert_equal("2S", hand.four_of_a_kind?[1][3].to_s)
+        	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	assert_equal(false, hand2.four_of_a_kind?[0])
         end
+
+        # def test_
 end
