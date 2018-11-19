@@ -11,6 +11,7 @@ class Hand
 		@cards.sort_by! {|card| Card::POKER_VALUES_STRING[card.value]}	
 		@cards_to_test = @cards.dup
 	end
+# Card::POKER_VALUES_STRING is a compound expression of a constant reference (POKER_VALUES_STRING) is the constant and it returns the value of the constant
 
 	attr_accessor :cards, :cards_to_test
 
