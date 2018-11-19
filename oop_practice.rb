@@ -60,8 +60,8 @@ attr_reader :value, :suit
   end
 
 # Exercise 3, Part I
-x = Card.new("2", "S")
- p x.inheritance
+# x = Card.new("2", "S")
+# p x.inheritance
 
 # ***************************************************
   def really_do_this(other_card)
@@ -105,60 +105,50 @@ end
 # 1. ENCAPSULATION, CONT.
     # b. Understanding PROTECTED METHODS
 
-# class Deck
+class Deck
 
-# # initializes Deck class with a deck of all the cards
-#   def initialize(cards = Deck.all_cards)
-#       @cards = cards
-#   end
+# initializes Deck class with a deck of all the cards
+  def initialize(cards = Deck.all_cards)
+      @cards = cards
+  end
 
-#   attr_accessor :cards
+  attr_accessor :cards
 
-# # ****************
-# # puts the cards from class Card into the deck - also, calling upon Card.values and Card.suits in the Deck class is an example of a PROTECTED method
-#   def self.all_cards
-#     cards = []
-#     a = Card.values
-#     b = Card.suits
-#     a.each do |value|
-#       b.each do |suit|
-#         cards << Card.new(value, suit)
-#       end
-#     end
-#     cards
-#   end
-# # *****************
+# ****************
+# puts the cards from class Card into the deck - also, calling upon Card.values and Card.suits in the Deck class is an example of a PROTECTED method
+  def self.all_cards
+    cards = []
+    a = Card.values
+    b = Card.suits
+    a.each do |value|
+      b.each do |suit|
+        cards << Card.new(value, suit)
+      end
+    end
+    cards
+  end
+# *****************
 
-# # shuffles the elements in self in place
-#   def shuffle
-#     @cards.shuffle!
-#   end
+# shuffles the elements in self in place
+  def shuffle
+    @cards.shuffle!
+  end
 
-# # removes (n) elements from the deck and returns them in an array, leaving @cards with the remaining elements 
-#   def take(n)
-#     @cards.shift(n)
-#   end
-# # ********************************************
-# # ********************************************
-# # Exercise 1.b
-# # p Deck.all_cards 
-#   # calling upon the protected method without using inheritance - this is done by using self.values and self.suits for the Card class and then using its Card class as the explicit receiver
+# removes (n) elements from the deck and returns them in an array, leaving @cards with the remaining elements 
+  def take(n)
+    @cards.shift(n)
+  end
+# ********************************************
+# ********************************************
+# Exercise 1.b
+# p Deck.all_cards 
+  # calling upon the protected method without using inheritance - this is done by using self.values and self.suits for the Card class and then using its Card class as the explicit receiver
   
-# # p Deck.values
-# # p Deck.suit
-#   # returns No Method Error for both ^^ because it does not have access to the Card class method of self.values/self.suit - it needs the method self.all_cards to serve as the explicit receiver
-# # *******************************************
-
-# # %%%% Following def is to be used with Concept 3, INHERITANCE (when the child inherits from the parent without any override)%%%%
-#   # def inheritance
-#   #   "This child is wack!"
-#   # end
-
-# # Exercise 3, Part I
-#  x2 = Deck.new()
-#  p x2.inheritance
-
-# end
+# p Deck.values
+# p Deck.suit
+  # returns No Method Error for both ^^ because it does not have access to the Card class method of self.values/self.suit - it needs the method self.all_cards to serve as the explicit receiver
+# *******************************************
+end
 
 
 # ********************************************
@@ -173,22 +163,19 @@ end
 
 # ********************************************
 # 3. OOP CONCEPT OF INHERITANCE
-    # Inheritance allows child classes to "inherit" the private methods of its parent class, while also permitting the child class to write new methods of its own unrelated to the parent class methods
-
-
-# %%%% Following def is to be used with Concept 3, INHERITANCE (when the child inherits from the parent, but with override)%%%%
-# *******Must comment out the above Deck class for the child override to work correctly********
-class Deck < Card
+  # Inheritance allows child classes to "inherit" the private methods of its parent class, while also permitting the child class to write new methods of its own unrelated to the parent class methods
+  # *******Must comment out the above Deck class for the child override to work correctly********
+# Exercise 3
+# class Deck < Card
 
   # def inheritance
   #   "This child is wack!"
   # end
 
-# Exercise 3, Part 2 (child override)
- x2 = Deck.new("2", "S")
- p x2.inheritance
- # When you use inheritance (Deck < Card), you don't have to rewrite the inheritance method from the Card class to be able to call it in the Deck class - inheritance allows for the same output to return from the parent class method when the child class calls it. 
- # HOWEVER, if you want to change the output of the child class method, you can override the parent class method by writing a new output for the same method within the child class - to see this, uncomment the inheritance method above (lines 183-185)
- # To show how the child class inherits the same output from the parent class inheritance method, keep those lines commented out
-end
+ # x2 = Deck.new("2", "S")
+ # p x2.inheritance
+    # When you use inheritance (Deck < Card), you don't have to rewrite the inheritance method from the Card class to be able to call it in the Deck class - inheritance allows for the same output to return from the parent class method when the child class calls it. 
+    # HOWEVER, if you want to change the output of the child class method, you can override the parent class method by writing a new output for the same method within the child class - to see this, uncomment the inheritance method above (lines 183-185)
+    # To show how the child class inherits the same output from the parent class inheritance method, keep those lines commented out
+# end
 
