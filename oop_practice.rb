@@ -145,7 +145,7 @@ end
 
 # ********************************************
 # 2. OOP CONCEPT OF ABSTRACTION
-    x = Deck.new()
-    p x.shuffle
+    # x = Deck.new()
+    # p x.shuffle
     # This is demonstrated when I call the public method x.shuffle and it utilizes the information from the Card class and runs it through the public Deck method of shuffle without any other information from the user necessary
     # Basically, this ONLY shows a high-level mechanism when using the Deck shuffle method
