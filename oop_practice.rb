@@ -148,4 +148,4 @@ end
     # x = Deck.new()
     # p x.shuffle
     # This is demonstrated when I call the public method x.shuffle and it utilizes the information from the Card class and runs it through the public Deck method of shuffle without any other information from the user necessary
-    # Basically, this ONLY shows a high-level mechanism when using the Deck shuffle method
+    # Basically, this ONLY shows a high-level mechanism when using the Deck shuffle method and allows for one method call that can be accessed later by other objects (== building a larger method from smaller "background" methods that will perform a specific action necessary to other objects)
