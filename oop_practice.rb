@@ -1,7 +1,7 @@
 # PRACTICE LEARNING OBJECT ORIENT PROGRAMMING AND CLASSES VIA THE ARTICLE https://medium.freecodecamp.org/object-oriented-programming-concepts-21bb035f7260
+# 1. OOP CONCEPT OF ENCAPSULATION
 
-# **Understanding PUBLIC and PRIVATE METHODS of Objects**
-
+#     a. **Understanding PUBLIC and PRIVATE METHODS of Objects**
 
 # I made the method equals(other_card) a private method and wrote a public method called really_do_this(other_card), which allows the Card object to manipulate the private method when called upon - this limits the ability of an explicit receiver (Card object) to manipulate the private method; the private method serves as internal storage for the Card class, as a result 
 
@@ -94,7 +94,9 @@ end
 
 
 # ************************************************************
-# Understanding PROTECTED METHODS
+# 1. ENCAPSULATION, CONT.
+
+    # b. Understanding PROTECTED METHODS
 class Deck
 
 # initializes Deck class with a deck of all the cards
@@ -139,3 +141,11 @@ class Deck
   # returns No Method Error for both ^^ because it does not have access to the Card class method of self.values/self.suit - it needs the method self.all_cards to serve as the explicit receiver
 # *******************************************
 end
+
+
+# ********************************************
+# 2. OOP CONCEPT OF ABSTRACTION
+    x = Deck.new()
+    p x.shuffle
+    # This is demonstrated when I call the public method x.shuffle and it utilizes the information from the Card class and runs it through the public Deck method of shuffle without any other information from the user necessary
+    # Basically, this ONLY shows a high-level mechanism when using the Deck shuffle method
