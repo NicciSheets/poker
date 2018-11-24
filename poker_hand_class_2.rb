@@ -50,23 +50,16 @@ class Hand
 		[false]
 	end
 
-# checks to see if the value of any cards match, and if they do then it shoves them into the pairs array; after the loop runs, if the pair_count == 2, then it returns true for two pair and returns the two card pairs, otherwise it is false
-# 	def two_pair?
-#   		pair_count = 0
-#   		pairs = []
-# 	    cards.each_with_index do |card, index1|
-# 	      	(index1+1...cards.length).each do |index2|
-# 	        	if card.value == cards[index2].value
-# 	        		pair_count += 1
-# 	        		pairs << [card, cards[index2]]   		
-# 	          		cards_to_test.delete(card)
-# 	          		cards_to_test.delete(cards[index2])
-# 	        	end
-# 	     	end
-# 	    end
-# 	    pair_count == 2 ? [true, pairs] : [false]
-# 	end
-
+# the second paried.keys[2][1] is the higher of the two pairs, use it for comparing when there is a tie of two pairs between hands
+	def two_pair?
+		hash = Hash.new(0)
+		@cards_values.each { |item| hash[item] += 1 }
+		if (hash.values - [2]).size == 1
+			paired = hash.delete_if { |key, value| value == 1}
+			return [true, "Two Pair", paired.keys]
+		end
+		[false]
+	end
 
 
 # # first it checks criteria for three of a kind and if returns true for that, then checks to see if the 2 cards left in cards_to_test are the same value, if yes, it's a full house

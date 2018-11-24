@@ -80,8 +80,22 @@ class TddPokerHandClass < Minitest::Test
             assert_equal(false, hand2.four_of_a_kind?[0])
             assert_equal("9", hand2.cards_values[-1])
         end
-                
+           
+
+        def test_two_pair?
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
+            # p hand.two_pair?
+            assert_equal(true, hand.two_pair?[0])
+            assert_equal("Two Pair", hand.two_pair?[1])
+            assert_equal("2", hand.two_pair?[2][0])
+            assert_equal("8", hand.two_pair?[2][1])
+            assert_equal("8", hand.cards_values[-1])
+            hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            assert_equal(false, hand2.two_pair?[0])
+            assert_equal("9", hand2.cards_values[-1])
+        end
       
+              
   #       def test_two_pair?
   #       	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
   #       	assert_equal(true, hand.two_pair?[0])
