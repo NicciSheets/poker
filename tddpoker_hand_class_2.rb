@@ -64,14 +64,14 @@ class TddPokerHandClass < Minitest::Test
 
         def test_four_of_a_kind?
             hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-            p hand.four_of_a_kind?
+            # p hand.four_of_a_kind?
             assert_equal(true, hand.four_of_a_kind?[0])
             assert_equal("Four of a Kind", hand.four_of_a_kind?[1])
             assert_equal("2", hand.four_of_a_kind?[2])
             assert_equal("8", hand.cards_values[-1])
             hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal(false, hand2.four_of_a_kind?[0])
-            assert_equal("9", hand2.cards_vaues[-1])
+            assert_equal("9", hand2.cards_values[-1])
         end
                 
       
