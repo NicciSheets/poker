@@ -21,49 +21,12 @@ class Hand
 		Hand.new(deck.take(5))
   	end
 
-# this is so I can return a string for each of the definitions, if true
-  	# def evaluate_hand
-  	# 	# if straight_flush?
-  	# 	# 	"straight flush"
-  	# 	# elsif four_of_a_kind?[0]
-  	# 	# 	"four of a kind"
-  	# 	# elsif full_house?[0]
-  	# 	# 	"full house"
-  	# 	# elsif flush?
-  	# 	# 	"flush"
-  	# 	# elsif straight?
-  	# 	# 	"straight"
-  	# 	if three_of_a_kind?[0]
-  	# 		"three of a kind"
-  	# 	# elsif two_pair?[0]
-  	# 	# 	"two pair"
-  	# 	else pair?[0]
-  	# 		"pair"
-  	# 	end
-  	# end
-
-
-# if the value of 2 cards are the same, returns as true for a pair; uses a different way to iterate through the cards (rather than using a counter)
- #  	def pair?
-	#     cards.each_with_index do |card, index1|
-	#       	(index1+1...cards.length).each do |index2|
-	#         	if card.value == cards[index2].value
-	#           		cards_to_test.delete(card)
-	#           		cards_to_test.delete(cards[index2])
-	#           	return [true, [card, cards[index2]]]
-	#         	end
-	#      	end
-	#     end
-	#     [false]
-	# end
-
-
 	def pair?
 		# p @cards_values	
 		hash = Hash.new(0)
  		@cards_values.each { |item| hash[item] += 1 }
  		if hash.values.include?(2) 
-  			return [true, "Pair", hash.key(2), ]
+  			return [true, "Pair", hash.key(2)]
   		end
   		[false]
   		#hash.key(2) gives you the value of the pair, in case you have a tie and need to compare which is higher
@@ -104,49 +67,6 @@ class Hand
 # 	    pair_count == 2 ? [true, pairs] : [false]
 # 	end
 
-
-# # checks for three cards of same value and puts them into the matching_cards array, returning true for three of a kind
-# 	def three_of_a_kind?
-# 		cards.each_with_index do |card, index1|
-# 			matching_cards = [card]
-#       		match_count = 1
-# 	      	(index1+1...cards.length).each do |index2|
-# 	        	if card.value == cards[index2].value
-# 	        		match_count += 1
-# 	        		matching_cards << cards[index2]	          		
-# 	        	end
-# 	        end
-# 	    if match_count == 3
-# 	    	matching_cards.each do |card|
-# 	    		cards_to_test.delete(card)
-# 	    	end
-# 	    	return [true, matching_cards]
-# 	    	end
-# 	    end
-# 	    [false]
-# 	end
-	
-
-# # determines if four cards have the same value and adds to the match_count for each one that matches.  If match_count == 4, it's true for four of a kind.
-# 	def four_of_a_kind?
-# 		cards.each_with_index do |card, index1|
-# 			matching_cards = [card]
-#       		match_count = 1
-# 	      	(index1+1...cards.length).each do |index2|
-# 	        	if card.value == cards[index2].value
-# 	        		match_count += 1
-# 	        		matching_cards << cards[index2]	          		
-# 	        	end
-# 	        end
-# 	    if match_count == 4
-# 	    	matching_cards.each do |card|
-# 	    		cards_to_test.delete(card)
-# 	    	end
-# 	    	return [true, matching_cards]
-# 	    	end
-# 	    end
-# 	    [false]
-# 	end
 
 
 # # first it checks criteria for three of a kind and if returns true for that, then checks to see if the 2 cards left in cards_to_test are the same value, if yes, it's a full house
