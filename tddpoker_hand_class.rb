@@ -4,7 +4,8 @@ require_relative "poker_hand_class.rb"
 class TddPokerHandClass < Minitest::Test
 
 		def test_hand_is_class
-			x = Hand.new()
+			cards = Deck.all_cards.shuffle
+			x = Hand.new(cards)
 			assert_equal(Hand, x.class)
 		end
 

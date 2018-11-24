@@ -4,7 +4,9 @@ require_relative "poker_card_class.rb"
 class TddPokerCardClass < Minitest::Test
 
 	def test_card_is_a_class
-	 	x = Card.new("value", "suit")
+        value = :two
+        suit = :spades
+       	x = Card.new(value, suit)
         assert_equal(Card, x.class)
     end
 
