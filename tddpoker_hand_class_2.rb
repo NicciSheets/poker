@@ -83,40 +83,20 @@ class TddPokerHandClass < Minitest::Test
            
 
         def test_two_pair?
-            hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
             # p hand.two_pair?
             assert_equal(true, hand.two_pair?[0])
             assert_equal("Two Pair", hand.two_pair?[1])
             assert_equal("2", hand.two_pair?[2][0])
             assert_equal("8", hand.two_pair?[2][1])
-            assert_equal("8", hand.cards_values[-1])
+            assert_equal("J", hand.cards_values[-1])
             hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal(false, hand2.two_pair?[0])
             assert_equal("9", hand2.cards_values[-1])
         end
       
               
-  #       def test_two_pair?
-  #       	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
-  #       	assert_equal(true, hand.two_pair?[0])
-  #       	assert_equal(1, hand.cards_to_test.length)
-  #       	assert_equal("7C", hand.cards_to_test[0].to_s)
-  #       	assert_equal("two pair", hand.evaluate_hand)
-  #       	assert_equal(2, hand.two_pair?[1].length)
-  #       	assert_equal(2, hand.two_pair?[1][0].length)
-  #       	assert_equal(2, hand.two_pair?[1][1].length)
-  #       	assert_equal("2C", hand.two_pair?[1][0][0].to_s)
-  #       	assert_equal("2S", hand.two_pair?[1][0][1].to_s)
-  #       	assert_equal("8S", hand.two_pair?[1][1][0].to_s)
-  #       	assert_equal("8C", hand.two_pair?[1][1][1].to_s)
-  #       	x = hand.two_pair?[1][0][0].to_s 
-  #       	y = hand.two_pair?[1][1][0].to_s
-  #       	# this tells me that the first pair has a lower value than the second pair, so the second pair is the highest pair
-  #       	assert_operator x.chr, :<, y.chr
-  #       	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-  #       	assert_equal(false, hand2.two_pair?[0])
-  #       end
-
+  #     
 
   #        #       def test_four_of_a_kind?
   #       	hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
