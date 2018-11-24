@@ -23,50 +23,33 @@ class TddPokerHandClass < Minitest::Test
 		end
 
 
-		# def test_cards_in_are_sorted_regarding_poker_values
-		# 	cards = [Card.new(:eight, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)]
-		# 	deck = Deck.new(cards)
-		# 	hand = Hand.deal(deck)
-		# 	cards_sorted = [Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs), Card.new(:eight, :clubs)]
-		# 	deck_sorted = Deck.new(cards_sorted)
-		# 	hand_sorted = Hand.deal(deck_sorted)
-		# 	assert_equal(hand.cards, hand_sorted.cards)
-		# 	assert_equal(hand.cards_to_test, hand_sorted.cards_to_test)
-		# 	assert_equal(hand.cards, hand.cards_to_test)
-		# 	assert_equal(hand_sorted.cards, hand_sorted.cards_to_test)
-		# end
+		def test_cards_are_sorted_regarding_poker_values
+			cards = [Card.new(:eight, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)]
+			deck = Deck.new(cards)
+			hand = Hand.deal(deck)
+			cards_sorted = [Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs), Card.new(:eight, :clubs)]
+			deck_sorted = Deck.new(cards_sorted)
+			hand_sorted = Hand.deal(deck_sorted)
+			assert_equal(hand.cards_sorted, hand_sorted.cards_sorted)
+		end
 
-		# def test_cards_dup_creates_duplicates
-		# 	cards = [Card.new(:two, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)]
-		# 	assert_equal(cards, cards.dup)
-		# end
+		
+        def test_pair?
+            hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
+            # p hand.pair_b?
+            assert_equal("pair", hand.evaluate_hand)
+            assert_equal(true, hand.pair?[0])
+            # the test below gives us the value of the paired cards
+            assert_equal("7", hand.pair?[1])
+            # the test below gives us the value of the highest card in the hand, whether it is the pair or not
+            assert_equal("8", hand.cards_values[-1]) 
+            hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            assert_equal(false, hand2.pair?)
+            # the test below gives us the value of the highest card in the hand to be used for determining winner
+            assert_equal("9", hand2.cards_values[-1]) 
+        end
 
-
-		# def test_cards_in_hand_can_be_manipulated_for_testing
-		# 	cards = [Card.new(:eight, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)]
-  #    		deck = Deck.new(cards.dup)
-  #     		hand = Hand.deal(deck)
-  #     		assert_equal(Hand, hand.class)
-  #     		assert_equal(hand.cards, hand.cards_to_test)
-  #       end
-
-
-  #       def test_pair?
-  #       	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
-  #       	assert_equal(true, hand.pair?[0])
-  #       	assert_equal(3, hand.cards_to_test.length)
-  #       	assert_equal("2S", hand.cards_to_test[0].to_s)
-  #       	assert_equal("5C", hand.cards_to_test[1].to_s)
-  #       	assert_equal("7C", hand.cards_to_test[2].to_s)
-  #       	assert_equal("pair", hand.evaluate_hand)
-  #       	assert_equal(2, hand.pair?[1].length)
-  #       	assert_equal("8S", hand.pair?[1][0].to_s)
-  #       	assert_equal("8C", hand.pair?[1][1].to_s)
-  #       	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-  #       	assert_equal(false, hand2.pair?[0])
-  #       end
-
-
+  #      
   #       def test_two_pair?
   #       	hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
   #       	assert_equal(true, hand.two_pair?[0])
@@ -176,19 +159,6 @@ class TddPokerHandClass < Minitest::Test
   #    		assert_equal(false, hand2.straight_flush?)
   #    	end
 
-     	def test_pair?
-     		hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
-     		# p hand.pair_b?
-            assert_equal("pair", hand.evaluate_hand)
-            assert_equal(true, hand.pair?[0])
-            # the test below gives us the value of the paired cards
-            assert_equal("7", hand.pair?[1])
-            # the test below gives us the value of the highest card in the hand, whether it is the pair or not
-            assert_equal("8", hand.cards_values[-1]) 
-            hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            assert_equal(false, hand2.pair?)
-            # the test below gives us the value of the highest card in the hand to be used for determining winner
-            assert_equal("9", hand2.cards_values[-1]) 
-     	end
+     	
 
 end
