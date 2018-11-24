@@ -22,25 +22,25 @@ class Hand
   	end
 
 # this is so I can return a string for each of the definitions, if true
-  	def evaluate_hand
-  		# if straight_flush?
-  		# 	"straight flush"
-  		# elsif four_of_a_kind?[0]
-  		# 	"four of a kind"
-  		# elsif full_house?[0]
-  		# 	"full house"
-  		# elsif flush?
-  		# 	"flush"
-  		# elsif straight?
-  		# 	"straight"
-  		# elsif three_of_a_kind?[0]
-  		# 	"three of a kind"
-  		# elsif two_pair?[0]
-  		# 	"two pair"
-  		if pair?[0]
-  			"pair"
-  		end
-  	end
+  	# def evaluate_hand
+  	# 	# if straight_flush?
+  	# 	# 	"straight flush"
+  	# 	# elsif four_of_a_kind?[0]
+  	# 	# 	"four of a kind"
+  	# 	# elsif full_house?[0]
+  	# 	# 	"full house"
+  	# 	# elsif flush?
+  	# 	# 	"flush"
+  	# 	# elsif straight?
+  	# 	# 	"straight"
+  	# 	if three_of_a_kind?[0]
+  	# 		"three of a kind"
+  	# 	# elsif two_pair?[0]
+  	# 	# 	"two pair"
+  	# 	else pair?[0]
+  	# 		"pair"
+  	# 	end
+  	# end
 
 
 # if the value of 2 cards are the same, returns as true for a pair; uses a different way to iterate through the cards (rather than using a counter)
@@ -63,16 +63,19 @@ class Hand
 		hash = Hash.new(0)
  		@cards_values.each { |item| hash[item] += 1 }
  		if hash.values.include?(2) 
-  			return [true, hash.key(2)]
+  			return [true, "Pair", hash.key(2), ]
   		end
-  		false
+  		[false]
   		#hash.key(2) gives you the value of the pair, in case you have a tie and need to compare which is higher
 	end
 
-	def three_of_a_kind_b?
+	def three_of_a_kind?
 		hash = Hash.new(0)
 		@cards_values.each { |item| hash[item] += 1 }
-		hash.values.include?(3)
+		if hash.values.include?(3)
+			return [true, "Three of a Kind", hash.key(3)]
+		end
+		false
 	end
 
 # checks to see if the value of any cards match, and if they do then it shoves them into the pairs array; after the loop runs, if the pair_count == 2, then it returns true for two pair and returns the two card pairs, otherwise it is false

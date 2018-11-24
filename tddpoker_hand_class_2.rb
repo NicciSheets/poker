@@ -36,18 +36,32 @@ class TddPokerHandClass < Minitest::Test
 		
         def test_pair?
             hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
-            # p hand.pair_b?
-            assert_equal("pair", hand.evaluate_hand)
+            # p hand.pair?
             assert_equal(true, hand.pair?[0])
+            # the test below gives us the answer of "Pair" if true
+            assert_equal("Pair", hand.pair?[1])
             # the test below gives us the value of the paired cards
-            assert_equal("7", hand.pair?[1])
+            assert_equal("7", hand.pair?[2])
             # the test below gives us the value of the highest card in the hand, whether it is the pair or not
             assert_equal("8", hand.cards_values[-1]) 
             hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            assert_equal(false, hand2.pair?)
+            assert_equal(false, hand2.pair?[0])
             # the test below gives us the value of the highest card in the hand to be used for determining winner
             assert_equal("9", hand2.cards_values[-1]) 
         end
+
+        def test_three_of_a_kind?
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            # p hand.three_of_a_kind?
+            assert_equal(true, hand.three_of_a_kind?[0])
+            assert_equal("Three of a Kind", hand.three_of_a_kind?[1])
+            assert_equal("2", hand.three_of_a_kind?[2])
+            assert_equal("8", hand.cards_values[-1])
+            hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            assert_equal(false, hand2.pair?[0])
+            assert_equal("9", hand2.cards_values[-1])
+        end
+
 
   #      
   #       def test_two_pair?
