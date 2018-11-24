@@ -160,7 +160,7 @@ class TddPokerHandClass < Minitest::Test
         def test_straight_flush?
         	hand = Hand.new([Card.new(:two, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
         	assert_equal("straight flush", hand.evaluate_hand)
-        	p hand.straight_flush?
+        	# p hand.straight_flush?
         	assert_equal("2C", hand.straight_flush?[0].to_s)
         	assert_equal("3C", hand.straight_flush?[1].to_s)
         	assert_equal("4C", hand.straight_flush?[2].to_s)

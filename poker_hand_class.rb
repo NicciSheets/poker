@@ -23,7 +23,9 @@ class Hand
 
 # this is so I can return a string for each of the definitions, if true
   	def evaluate_hand
-  		if four_of_a_kind?[0]
+  		if straight_flush?
+  			"straight flush"
+  		elsif four_of_a_kind?[0]
   			"four of a kind"
   		elsif full_house?[0]
   			"full house"
@@ -147,7 +149,10 @@ class Hand
  	end
 
  
- 
+
+ 	def straight_flush?
+ 		straight? && flush?
+ 	end
 
 
 end
