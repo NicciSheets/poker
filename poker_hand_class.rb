@@ -5,7 +5,7 @@ class Hand
 
 # intializes the Hand class with shuffled cards of the deck
 # cards.sort_by! sorts the cards based upon their poker values
-# cards.dup gives me the cards to test by creating a copy of the cards in the hand
+# cards.dup gives me the cards to test, specifically to test for instances of a tie and winner is determined by the highest card not in play (which would be one of the cards held in hand.cards_to_test) by creating a copy of the cards in the hand
 	def initialize(cards = Deck.all_cards.shuffle)
 		@cards = cards
 		@cards.sort_by! {|card| Card::POKER_VALUES_STRING[card.value]}	
