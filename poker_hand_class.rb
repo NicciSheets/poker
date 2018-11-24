@@ -57,7 +57,7 @@ class Hand
 	    [false]
 	end
 
-
+	
 # checks to see if the value of any cards match, and if they do then it shoves them into the pairs array; after the loop runs, if the pair_count == 2, then it returns true for two pair and returns the two card pairs, otherwise it is false
 	def two_pair?
   		pair_count = 0
@@ -149,7 +149,7 @@ class Hand
  	end
 
  
-
+# if is true for straight? and flush? then it is a straight flush
  	def straight_flush?
  		straight? && flush?
  	end
