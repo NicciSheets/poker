@@ -31,6 +31,13 @@ class TddPokerHandClass < Minitest::Test
 			deck_sorted = Deck.new(cards_sorted)
 			hand_sorted = Hand.deal(deck_sorted)
 			assert_equal(hand.cards_sorted, hand_sorted.cards_sorted)
+            # p hand.cards_sorted
+            # p hand.cards_sorted[0].to_s
+            assert_equal("3C", hand.cards_sorted[0].to_s)
+            assert_equal("4C", hand.cards_sorted[1].to_s)
+            assert_equal("5C", hand.cards_sorted[2].to_s)
+            assert_equal("6C", hand.cards_sorted[3].to_s)
+            assert_equal("8C", hand.cards_sorted[4].to_s)
 		end
 
 		
