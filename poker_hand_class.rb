@@ -27,10 +27,12 @@ class Hand
   			"four of a kind"
   		elsif full_house?[0]
   			"full house"
-  		elsif three_of_a_kind?[0]
-  			"three of a kind"
+  		elsif flush?
+  			"flush"
   		elsif straight?
   			"straight"
+  		elsif three_of_a_kind?[0]
+  			"three of a kind"
   		elsif two_pair?[0]
   			"two pair"
   		else pair?[0]
@@ -127,6 +129,7 @@ class Hand
 	end
 
 
+# checks to see if each consecutive card is one higher than the previous
 	def straight?
     	cards.each_with_index do |card, index|
       		next if index + 1 == cards.length
@@ -134,6 +137,16 @@ class Hand
    		end
  	end
 
+
+
+ 	def flush?
+ 		cards.each_with_index do |card, index|
+ 			next if index + 1 == cards.length
+ 			return false unless card.suit == cards[index + 1].suit
+ 		end
+ 	end
+
+ 	
 
 
 end
