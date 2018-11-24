@@ -75,7 +75,7 @@ class Hand
 		if hash.values.include?(3)
 			return [true, "Three of a Kind", hash.key(3)]
 		end
-		false
+		[false]
 	end
 
 # checks to see if the value of any cards match, and if they do then it shoves them into the pairs array; after the loop runs, if the pair_count == 2, then it returns true for two pair and returns the two card pairs, otherwise it is false
