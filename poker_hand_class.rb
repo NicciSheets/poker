@@ -138,7 +138,7 @@ class Hand
  	end
 
 
-
+# checks to see if each card has the same suit
  	def flush?
  		cards.each_with_index do |card, index|
  			next if index + 1 == cards.length
@@ -146,7 +146,8 @@ class Hand
  		end
  	end
 
- 	
+ 
+ 
 
 
 end
