@@ -58,6 +58,11 @@ class Hand
 	end
 
 
+	def pair_b?
+		cards_new = @cards.map {|card| Card::VALUE_STRING[card.value]}
+		p cards_new
+	end
+
 # checks to see if the value of any cards match, and if they do then it shoves them into the pairs array; after the loop runs, if the pair_count == 2, then it returns true for two pair and returns the two card pairs, otherwise it is false
 	def two_pair?
   		pair_count = 0
