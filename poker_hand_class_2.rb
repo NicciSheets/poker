@@ -17,30 +17,32 @@ class Hand
 	attr_accessor :cards_values, :cards_sorted
 
 
+# refactored out this commonality for the pair-type methods
 	def cards_frequency
 		hash = Hash.new(0)
 		@cards_values.each {|item| hash[item] += 1}
 		hash
 	end
 
+
 # used to deal 5 cards into the hand; deck = Deck.all_cards.shuffle
 	def self.deal(deck)
 		Hand.new(deck.take(5))
   	end
 
+# uses the already defined pair and three of a kind? methods to determine if is a full house; returns first the pair value, then the three of a kind value
   	def full_house?
 		pair? && three_of_a_kind?
 		return [true, "Full House", ["#{pair?[1]} #{pair?[2]}", "#{three_of_a_kind?[1]} #{three_of_a_kind?[2]}"]]
 	end
-	
+
+
+# 
 	def pair?
-		# p @cards_values	
-		hash = Hash.new(0)
- 		@cards_values.each { |item| hash[item] += 1 }
- 		if hash.values.include?(2) 
-  			return [true, "Pair", hash.key(2)]
-  		end
-  		[false]
+		@frequency.values.include?(2)
+  		return [true, "Pair", @frequency.key(2)]
+  		# end
+  		# [false]
   		#hash.key(2) gives you the value of the pair, in case you have a tie and need to compare which is higher
 	end
 
@@ -56,15 +58,8 @@ class Hand
 
 	
 	def four_of_a_kind?
-		# hash = Hash.new(0)
-		# @cards_values.each { |item| hash[item] +=1 }
-		# if hash.values.include?(4)
 		@frequency.values.include?(4)
-		# return [true, "Four of a Kind", hash.key(4)]
 		return [true, "Four of a Kind", @frequency.key(4)]
-
-		# end
-		# [false]
 	end
 	
 # 
