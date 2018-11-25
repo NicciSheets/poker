@@ -37,29 +37,28 @@ class Hand
 	end
 
 
-# 
+# returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
 		@frequency.values.include?(2)
   		return [true, "Pair", @frequency.key(2)]
-  		# end
-  		# [false]
-  		#hash.key(2) gives you the value of the pair, in case you have a tie and need to compare which is higher
 	end
 
-	
+
+# returns true if there are 3 values the same in the hash and then it gives the value of the 3 matching cards in the last index of array 
 	def three_of_a_kind?
 		@frequency.values.include?(3)
 		return [true, "Three of a Kind", @frequency.key(3)]
 	end
 
 	
+# returns true if there are 4 values the same in the hash and then it gives teh value of the 4 matching cards in the last index of the array 
 	def four_of_a_kind?
 		@frequency.values.include?(4)
 		return [true, "Four of a Kind", @frequency.key(4)]
 	end
 	
 
-
+# this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
 		@frequency.delete_if {|key, value| value == 1}
