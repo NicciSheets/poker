@@ -109,18 +109,15 @@ class TddPokerHandClass < Minitest::Test
 
       
   #    
-  #       def test_straight?
-  #       	hand = Hand.new([Card.new(:two, :diamonds), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-  #       	assert_equal("straight", hand.evaluate_hand)
-  #       	# p hand.straight?
-  #       	assert_equal("2D", hand.straight?[0].to_s)
-  #       	assert_equal("3C", hand.straight?[1].to_s)
-  #       	assert_equal("4C", hand.straight?[2].to_s)
-  #       	assert_equal("5C", hand.straight?[3].to_s)
-  #       	assert_equal("6C", hand.straight?[4].to_s)
-  #       	hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-  #       	assert_equal(false, hand2.straight?)
-  #       end
+        def test_straight?
+        	hand = Hand.new([Card.new(:two, :diamonds), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            assert_equal(true, hand.straight?[0])
+        	assert_equal("Straight", hand.straight?[1])
+        	# p "hand.straight? is #{hand.straight?}"
+            assert_equal("6", hand.cards_values[-1])
+        	# hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	# assert_equal(false, hand2.straight?)
+        end
 
         def test_flush?
         	hand = Hand.new([Card.new(:two, :clubs), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])

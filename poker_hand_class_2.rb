@@ -3,16 +3,16 @@ require_relative "poker_deck_class.rb"
 
 class Hand  	
 
-# intializes the Hand class with shuffled cards of the deck
-# cards.sort_by! sorts the cards based upon their poker values
-# cards_values gives us only the value of the cards once they are sorted according to their poker value
+# @cards_sorted gives us each of the 5 cards and their object id (<Card...@value=...@suit=...>)
+# @cards_values gives us each card value once the @cards_sorted are sorted according to their poker value
+# @cards_suits gives us each of the card's suits from the 5 card hand
+# @frequency is used to call upon the methood cards_frequncy, which counts how many times each card value is repeated, if any = the hash.key is the card value and the hash.value is how many times the value was repeated
 	def initialize(cards)
 		@cards = cards
 		@cards_sorted = @cards.sort_by! {|card| Card::POKER_VALUES_STRING[card.value]}	
 		@cards_values = @cards_sorted.map {|card| Card::VALUE_STRING[card.value]}
-		@cards_suits = @cards_sorted.map {|card| Card::SUIT_STRING[card.suit]}
+		@cards_suits = @cards.map {|card| Card::SUIT_STRING[card.suit]}
 		@frequency = cards_frequency
-
 	end
 # Card::POKER_VALUES_STRING is a compound expression of a constant reference (POKER_VALUES_STRING) is the constant and it returns the value of the constant
 
@@ -68,10 +68,19 @@ class Hand
 	end		
 		
 
+# if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
 	def flush?
 		@cards_suits.uniq.length == 1
 		return [true, "Flush"]
 	end
+
+
+	def straight?
+		@cards_values.each_cons(2)  {|previous, current| (previous.to_i + 1) == current.to_i}
+		return [true, "Straight"]
+   	end
+
+
 
 # # checks to see if each consecutive card is one higher than the previous
 # 	def straight?
