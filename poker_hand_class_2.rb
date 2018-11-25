@@ -3,6 +3,19 @@ require_relative "poker_deck_class.rb"
 
 class Hand  	
 
+	HAND_VALUES = 
+	 [['Royal Flush',     :royal_flush? ],
+	  ['Straight Flush',  :straight_flush? ],
+	  ['Four of a Kind',  :four_of_a_kind? ],
+	  ['Full House',      :full_house? ],
+	  ['Flush',           :flush? ],
+	  ['Straight',        :straight? ],
+	  ['Three of a Kind', :three_of_a_kind?],
+	  ['Two Pair',        :two_pair? ],
+	  ['Pair',            :pair? ],
+	  ['High Card',    	  :high_card? ]]
+
+
 # @cards_sorted gives us each of the 5 cards and their object id (<Card...@value=...@suit=...>)
 # @cards_values gives us each card value once the @cards_sorted are sorted according to their poker value
 # @cards_suits gives us each of the card's suits from the 5 card hand
@@ -92,7 +105,7 @@ class Hand
 # this is used if there are no winning hand options, the high card is determined only from the larger cards (10 and up)
    	def high_card?
    		(cards_sorted.map {|card| Card::POKER_VALUES_STRING[card.value]}).last >= 9
-   		return ["High Card", cards_sorted[-1].to_s]
+   		return [true, "High Card", cards_sorted[-1].to_s]
    	end
 
 end
