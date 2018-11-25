@@ -22,7 +22,7 @@ class Hand
 # refactored out this commonality for the pair-type methods
 	def cards_frequency
 		hash = Hash.new(0)
-		@cards_values.each {|item| hash[item] += 1}
+		cards_values.each {|item| hash[item] += 1}
 		hash
 	end
 
@@ -70,47 +70,23 @@ class Hand
 
 # if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
 	def flush?
-		@cards_suits.uniq.length == 1
+		cards_suits.uniq.length == 1
 		return [true, "Flush"]
 	end
 
 
 #for each 2 consecutive card values, compares the previous value with the current value; if (previous+1==current) then it is a straight (bc the values are one after another consecutiviely )
 	def straight?
-		@cards_values.each_cons(2)  {|previous, current| (previous.to_i + 1) == current.to_i}
+		cards_values.each_cons(2)  {|previous, current| (previous.to_i + 1) == current.to_i}
 		return [true, "Straight"]
    	end
 
 
-
+# if it's true for straight? && flush?? then it is a straight flush
    	def straight_flush?
    		straight? && flush?
    		return [true, "Straight Flush"]
    	end
-
-# # checks to see if each consecutive card is one higher than the previous
-# 	def straight?
-#     	cards.each_with_index do |card, index|
-#       		next if index + 1 == cards.length
-#       		return false unless Card::POKER_VALUES_STRING[cards[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1
-#    		end
-#  	end
-
-
-# # checks to see if each card has the same suit
-#  	def flush?
-#  		cards.each_with_index do |card, index|
-#  			next if index + 1 == cards.length
-#  			return false unless card.suit == cards[index + 1].suit
-#  		end
-#  	end
-
- 
-# # if is true for straight? and flush? then it is a straight flush
-#  	def straight_flush?
-#  		straight? && flush?
-#  	end
-
 
 end
 
