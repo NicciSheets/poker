@@ -75,12 +75,18 @@ class Hand
 	end
 
 
+#for each 2 consecutive card values, compares the previous value with the current value; if (previous+1==current) then it is a straight (bc the values are one after another consecutiviely )
 	def straight?
 		@cards_values.each_cons(2)  {|previous, current| (previous.to_i + 1) == current.to_i}
 		return [true, "Straight"]
    	end
 
 
+
+   	def straight_flush?
+   		straight? && flush?
+   		return [true, "Straight Flush"]
+   	end
 
 # # checks to see if each consecutive card is one higher than the previous
 # 	def straight?
