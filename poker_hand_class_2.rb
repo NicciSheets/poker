@@ -88,5 +88,11 @@ class Hand
    		return [true, "Straight Flush"]
    	end
 
-end
 
+# this is used if there are no winning hand options, the high card is determined only from the larger cards (10 and up)
+   	def high_card?
+   		(cards_sorted.map {|card| Card::POKER_VALUES_STRING[card.value]}).last >= 9
+   		return ["High Card", cards_sorted[-1].to_s]
+   	end
+
+end
