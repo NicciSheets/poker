@@ -126,13 +126,18 @@ class TddPokerHandClass2 < Minitest::Test
      	end
 
         def test_high_card?
-            hand = Hand.new([Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:five, :spades), Card.new(:jack, :clubs), Card.new(:six, :diamonds)])
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:three, :hearts), Card.new(:five, :clubs), Card.new(:eight, :spades), Card.new(:ace, :diamonds)])
             # p "hand.high_card? is #{hand.high_card?}"
             assert_equal(true, hand.high_card?[0])
             assert_equal("High Card", hand.high_card?[1])
-            assert_equal("JC", hand.high_card?[2])
+            assert_equal("AD", hand.high_card?[2])
         end
 
+        def test_hand_rating
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            p "hand.ranking is #{hand.ranking}"
+            assert_equal(:four_of_a_kind, hand.ranking)
+        end    
      	
 
 end

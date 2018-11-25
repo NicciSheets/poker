@@ -3,18 +3,17 @@ require_relative "poker_deck_class.rb"
 
 class Hand  	
 
-	HAND_VALUES = 
-	 [['Royal Flush',     :royal_flush? ],
-	  ['Straight Flush',  :straight_flush? ],
-	  ['Four of a Kind',  :four_of_a_kind? ],
-	  ['Full House',      :full_house? ],
-	  ['Flush',           :flush? ],
-	  ['Straight',        :straight? ],
-	  ['Three of a Kind', :three_of_a_kind?],
-	  ['Two Pair',        :two_pair? ],
-	  ['Pair',            :pair? ],
-	  ['High Card',    	  :high_card? ]]
-
+	 # HAND_VALUES = {
+  #   :straight_flush? => 9,
+  #   :four_of_a_kind? => 8,
+  #   "Full House" => 7,
+  #   "Flush" => 6,
+  #   "Straight" => 5,
+  #   "Three of a Kind" => 4,
+  #   "Two Pair" => 3,
+  #   "Pair" => 2,
+  #   "High Card" => 1
+ 	# }
 
 # @cards_sorted gives us each of the 5 cards and their object id (<Card...@value=...@suit=...>)
 # @cards_values gives us each card value once the @cards_sorted are sorted according to their poker value
@@ -26,10 +25,11 @@ class Hand
 		@cards_values = @cards_sorted.map {|card| Card::VALUE_STRING[card.value]}
 		@cards_suits = @cards.map {|card| Card::SUIT_STRING[card.suit]}
 		@frequency = cards_frequency
+		# @hand_rating = self.hand_rating
 	end
 # Card::POKER_VALUES_STRING is a compound expression of a constant reference (POKER_VALUES_STRING) is the constant and it returns the value of the constant
 
-	attr_accessor :cards_values, :cards_sorted, :cards_suits
+	attr_accessor :cards_values, :cards_sorted, :cards_suits, :hand_values
 
 
 # refactored out this commonality for the pair-type methods
@@ -107,5 +107,29 @@ class Hand
    		(cards_sorted.map {|card| Card::POKER_VALUES_STRING[card.value]}).last >= 9
    		return [true, "High Card", cards_sorted[-1].to_s]
    	end
+
+
+   	def ranks
+      	[:high_card, :pair, :two_pair, :three_of_a_kind, :straight, :flush, :full_house, :four_of_a_kind, :straight_flush]
+    end
+
+    def rank
+   	    # {:straight_flush => straight_flush?[1], :four_of_a_kind => four_of_a_kind?[1], :full_house => full_house?[1], :flush => flush?[1], :straight => straight?[1], :three_of_a_kind => three_of_a_kind?[1], :two_pair => two_pair?[1], :pair => pair?[1], :high_card => high_card?[1]}
+    	return :straight_flush if straight_flush?
+    	return :four_of_a_kind if four_of_a_kind?
+    	return :full_house if full_house?
+    	return :flush if flush?
+    	return :straight if straight?
+    	return :three_of_a_kind if three_of_a_kind?
+    	return :two_pair if two_pair?
+    	return :pair if pair?
+    	return :high_card if high_card?
+    end
+
+    def ranking
+    	p ranks.index(rank)
+  		 # p	cards_sorted.map {|rank| ranks.index(rank.values_at?(ranks))
+		
+    end
 
 end
