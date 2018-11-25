@@ -10,11 +10,18 @@ class Hand
 		@cards = cards
 		@cards_sorted = @cards.sort_by! {|card| Card::POKER_VALUES_STRING[card.value]}	
 		@cards_values = @cards_sorted.map {|card| Card::VALUE_STRING[card.value]}
+		@frequency = cards_frequency
 	end
 # Card::POKER_VALUES_STRING is a compound expression of a constant reference (POKER_VALUES_STRING) is the constant and it returns the value of the constant
 
 	attr_accessor :cards_values, :cards_sorted
 
+
+	def cards_frequency
+		hash = Hash.new(0)
+		@cards_values.each {|item| hash[item] += 1}
+		hash
+	end
 
 # used to deal 5 cards into the hand; deck = Deck.all_cards.shuffle
 	def self.deal(deck)
@@ -49,14 +56,18 @@ class Hand
 
 	
 	def four_of_a_kind?
-		hash = Hash.new(0)
-		@cards_values.each { |item| hash[item] +=1 }
-		if hash.values.include?(4)
-			return [true, "Four of a Kind", hash.key(4)]
-		end
-		[false]
-	end
+		# hash = Hash.new(0)
+		# @cards_values.each { |item| hash[item] +=1 }
+		# if hash.values.include?(4)
+		@frequency.values.include?(4)
+		# return [true, "Four of a Kind", hash.key(4)]
+		return [true, "Four of a Kind", @frequency.key(4)]
 
+		# end
+		# [false]
+	end
+	
+# 
 
 # the second paried.keys[2][1] is the higher of the two pairs, use it for comparing when there is a tie of two pairs between hands
 	def two_pair?
