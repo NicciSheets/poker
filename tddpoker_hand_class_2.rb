@@ -96,22 +96,18 @@ class TddPokerHandClass < Minitest::Test
         end
       
               
-  #     
-
-  #        #       def test_four_of_a_kind?
-  #       	hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-  #       	assert_equal(true, hand.four_of_a_kind?[0])
-  #       	assert_equal(1, hand.cards_to_test.length)
-  #       	assert_equal("8S", hand.cards_to_test[0].to_s)
-  #       	assert_equal("four of a kind", hand.evaluate_hand)
-  #       	assert_equal(4, hand.four_of_a_kind?[1].length)
-  #       	assert_equal("2H", hand.four_of_a_kind?[1][0].to_s)
-  #       	assert_equal("2C", hand.four_of_a_kind?[1][1].to_s)
-  #       	assert_equal("2D", hand.four_of_a_kind?[1][2].to_s)
-  #       	assert_equal("2S", hand.four_of_a_kind?[1][3].to_s)
-  #       	hand2 = Hand.new([Card.new(:eight, :clubs), Card.new(:three, :diamonds), Card.new(:jack, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-  #       	assert_equal(false, hand2.four_of_a_kind?[0])
-  #       end
+        def test_full_house?
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
+            # p hand.full_house?
+            assert_equal(true, hand.full_house?[0])
+            assert_equal("Full House", hand.full_house?[1])
+            # the first set is the pair, the second set is the three of a kind
+            assert_equal("Pair 8", hand.full_house?[2][0])
+            assert_equal("Three of a Kind 2", hand.full_house?[2][1])
+            hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            # p hand2.full_house?
+            # assert_equal(false, hand2.full_house?[0])
+        end
 
   #       def test_full_house?
   #       	hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])

@@ -21,6 +21,11 @@ class Hand
 		Hand.new(deck.take(5))
   	end
 
+  	def full_house?
+		pair? && three_of_a_kind?
+		return [true, "Full House", ["#{pair?[1]} #{pair?[2]}", "#{three_of_a_kind?[1]} #{three_of_a_kind?[2]}"]]
+	end
+	
 	def pair?
 		# p @cards_values	
 		hash = Hash.new(0)
@@ -32,6 +37,7 @@ class Hand
   		#hash.key(2) gives you the value of the pair, in case you have a tie and need to compare which is higher
 	end
 
+	
 	def three_of_a_kind?
 		hash = Hash.new(0)
 		@cards_values.each { |item| hash[item] += 1 }
@@ -41,6 +47,7 @@ class Hand
 		[false]
 	end
 
+	
 	def four_of_a_kind?
 		hash = Hash.new(0)
 		@cards_values.each { |item| hash[item] +=1 }
@@ -49,6 +56,7 @@ class Hand
 		end
 		[false]
 	end
+
 
 # the second paried.keys[2][1] is the higher of the two pairs, use it for comparing when there is a tie of two pairs between hands
 	def two_pair?
