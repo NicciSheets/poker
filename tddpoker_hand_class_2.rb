@@ -57,7 +57,7 @@ class TddPokerHandClass < Minitest::Test
 
         def test_full_house?
             hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
-            # p hand.full_house?
+            # p "hand.full_house? is #{hand.full_house?}"
             assert_equal(true, hand.full_house?[0])
             assert_equal("Full House", hand.full_house?[1])
             # the first set is the pair, the second set is the three of a kind
@@ -122,18 +122,14 @@ class TddPokerHandClass < Minitest::Test
   #       	assert_equal(false, hand2.straight?)
   #       end
 
-  #       def test_flush?
-  #       	hand = Hand.new([Card.new(:two, :clubs), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-  #       	assert_equal("flush", hand.evaluate_hand)
-  #       	# p hand.flush?
-  #       	assert_equal("2C", hand.flush?[0].to_s)
-  #       	assert_equal("4C", hand.flush?[1].to_s)
-  #       	assert_equal("5C", hand.flush?[2].to_s)
-  #       	assert_equal("6C", hand.flush?[3].to_s)
-  #       	assert_equal("9C", hand.flush?[4].to_s)  
-  #       	hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-  #       	assert_equal(false, hand2.flush?)
-  #       end    
+        def test_flush?
+        	hand = Hand.new([Card.new(:two, :clubs), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+        	# p "hand.flush? is #{hand.flush?}"
+            assert_equal(true, hand.flush?[0])
+            assert_equal("Flush", hand.flush?[1])
+            assert_equal("C", hand.cards_suits[-1])
+            assert_equal("9", hand.cards_values[-1])
+        end    
 
   #       def test_straight_flush?
   #       	hand = Hand.new([Card.new(:two, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])

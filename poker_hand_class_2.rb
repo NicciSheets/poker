@@ -10,11 +10,13 @@ class Hand
 		@cards = cards
 		@cards_sorted = @cards.sort_by! {|card| Card::POKER_VALUES_STRING[card.value]}	
 		@cards_values = @cards_sorted.map {|card| Card::VALUE_STRING[card.value]}
+		@cards_suits = @cards_sorted.map {|card| Card::SUIT_STRING[card.suit]}
 		@frequency = cards_frequency
+
 	end
 # Card::POKER_VALUES_STRING is a compound expression of a constant reference (POKER_VALUES_STRING) is the constant and it returns the value of the constant
 
-	attr_accessor :cards_values, :cards_sorted
+	attr_accessor :cards_values, :cards_sorted, :cards_suits
 
 
 # refactored out this commonality for the pair-type methods
@@ -66,18 +68,10 @@ class Hand
 	end		
 		
 
-
-
-# # first it checks criteria for three of a kind and if returns true for that, then checks to see if the 2 cards left in cards_to_test are the same value, if yes, it's a full house
-# 	def full_house?
-# 		if three_of_a_kind?[0]
-# 			if cards_to_test[0].value == cards_to_test[1].value
-# 				return [true, three_of_a_kind?[1], [cards_to_test[0], cards_to_test[1]]]
-# 			end
-# 		end
-# 		[false]
-# 	end
-
+	def flush?
+		@cards_suits.uniq.length == 1
+		return [true, "Flush"]
+	end
 
 # # checks to see if each consecutive card is one higher than the previous
 # 	def straight?
