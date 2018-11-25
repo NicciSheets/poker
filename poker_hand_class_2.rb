@@ -48,12 +48,8 @@ class Hand
 
 	
 	def three_of_a_kind?
-		hash = Hash.new(0)
-		@cards_values.each { |item| hash[item] += 1 }
-		if hash.values.include?(3)
-			return [true, "Three of a Kind", hash.key(3)]
-		end
-		[false]
+		@frequency.values.include?(3)
+		return [true, "Three of a Kind", @frequency.key(3)]
 	end
 
 	
