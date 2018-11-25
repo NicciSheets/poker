@@ -104,9 +104,7 @@ class TddPokerHandClass < Minitest::Test
             # the first set is the pair, the second set is the three of a kind
             assert_equal("Pair 8", hand.full_house?[2][0])
             assert_equal("Three of a Kind 2", hand.full_house?[2][1])
-            hand2 = Hand.new([Card.new(:two, :diamonds), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            # p hand2.full_house?
-            # assert_equal(false, hand2.full_house?[0])
+            assert_equal("8", hand.cards_values[-1])
         end
 
   #       def test_full_house?
