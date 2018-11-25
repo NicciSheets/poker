@@ -26,11 +26,11 @@ class Deck
 
 # shuffles the elements in self in place
 	def shuffle
-		@cards.shuffle!
+		cards.shuffle!
 	end
 
 # removes (n) elements from the deck and returns them in an array, leaving @cards with the remaining elements 
 	def take(n)
-		@cards.shift(n)
+		cards.shift(n)
 	end
 end
