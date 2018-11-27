@@ -77,15 +77,15 @@ class TddPokerHandClass2 < Minitest::Test
         end
                   
 
-        def test_two_pair?
-            hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
-            # p "hand.two_pair? is #{hand.two_pair?}"
-            assert_equal(true, hand.two_pair?)
-            # assert_equal(:two_pair, hand.two_pair?[1])
-            # assert_equal("2", hand.two_pair?[2][0])
-            # assert_equal("8", hand.two_pair?[2][1])
-            # assert_equal("J", hand.cards_values[-1])
-        end
+        # def test_two_pair?
+        #     hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
+        #     # p "hand.two_pair? is #{hand.two_pair?}"
+        #     assert_equal(true, hand.two_pair?)
+        #     # assert_equal(:two_pair, hand.two_pair?[1])
+        #     # assert_equal("2", hand.two_pair?[2][0])
+        #     # assert_equal("8", hand.two_pair?[2][1])
+        #     # assert_equal("J", hand.cards_values[-1])
+        # end
       
               
         def test_pair?
@@ -136,15 +136,23 @@ class TddPokerHandClass2 < Minitest::Test
       #   end
 
         def test_ranker
-            # the hand below holds a pair
             hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
             assert_equal(:pair, hand.ranker)
-            # p hand.ranker_values 
-            assert_equal(2, hand.ranker_values)
+            hand3 = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            assert_equal(:three_of_a_kind, hand3.ranker)
             hand2 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-            # hand2.ranker2
-             # assert_equal()
-        end
+            assert_equal(:four_of_a_kind, hand2.ranker)
+       end
 
-
+        def test_ranker_values
+            # pair
+            hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
+            assert_equal(2, hand.ranker_values)
+            # three of a kind
+            hand3 = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            assert_equal(4, hand3.ranker_values)
+            # four of a kind
+            hand2 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            assert_equal(8, hand2.ranker_values)
+        end      
    end
