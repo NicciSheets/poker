@@ -37,6 +37,7 @@ class Hand
 			four_of_a_kind? => :four_of_a_kind,
 			# full_house? => :full_house,
 			three_of_a_kind? => :three_of_a_kind,
+			two_pair? => :two_pair,
 			pair? => :pair
 		}
 		return_rank[true]
@@ -90,13 +91,13 @@ class Hand
 		
 	
 
-# # this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
-# # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
-# 	def two_pair?
-# 		@frequency.delete_if {|key, value| value == 1}
-# 		# return [true, :two_pair, @frequency.keys]
-# 	end	
-		
+# this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
+# paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
+	def two_pair?
+		@frequency.count(2)
+		return true
+	end
+	
 
 # # if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
 # 	def flush?
