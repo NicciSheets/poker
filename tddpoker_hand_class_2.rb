@@ -136,7 +136,9 @@ class TddPokerHandClass2 < Minitest::Test
         def test_ranker
             # the hand below holds a pair
             hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
-            assert_equal(:pair, hand.ranker2) 
+            assert_equal(:pair, hand.ranker)
+            # p hand.ranker_values 
+            assert_equal(2, hand.ranker_values)
             hand2 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
             # hand2.ranker2
              # assert_equal()

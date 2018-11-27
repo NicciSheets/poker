@@ -31,54 +31,21 @@ class Hand
 	attr_accessor :cards_values, :cards_sorted, :cards_suits
 
 
+	def ranker
+		return_rank = {
+			# straight_flush? => :straight_flush, 
+			four_of_a_kind? => :four_of_a_kind,
+			# full_house? => :full_house,
+			three_of_a_kind? => :three_of_a_kind,
+			pair? => :pair
+		}
+		return_rank[true]
+	end
 
-# 
-
-def ranks
-	[:high_card, :pair, :two_pairs, :three_of_a_kind, :straight, :flush, :full_house, :four_of_a_kind, :straight_flush]
-end
-
-# def ranker
-# 	stuff = HAND_VALUES.keys
-#    	# p "stuff is #{stuff}"
-#    	cards_sorted.each do |ranks, stuff|
-#    		if self.ranks == stuff
-#    			p stuff
-#    		end
-#    	end	
-# end
-
-# def ranker
-# 	return_rank = {
-# 	:straight_flush => straight_flush?, 
-# 	:four_of_a_kind => four_of_a_kind?[0],
-# 	:full_house => full_house?[0],
-# 	:flush => flush?[0],
-# 	:straight => straight?[0],
-# 	:three_of_a_kind => three_of_a_kind?[0],
-# 	:two_pair => two_pair?[0],
-# 	:pair => pair?[0],
-# 	:high_card => high_card?[0]
-# }
-def ranker
-	return_rank = {
-		# straight_flush? => :straight_flush, 
-		four_of_a_kind? => :four_of_a_kind,
-		# full_house? => :full_house,
-		three_of_a_kind? => :three_of_a_kind,
-		pair? => :pair
-	}
-end
-
-
-def ranker2
-	ranker.select {|value| value == true}
-	p ranker[true]
-	# ranker.select {}
-	# ranker.key(true)
-end
-
-
+	def ranker_values
+		HAND_VALUES[self.ranker]
+	end
+ 
 # refactored out this commonality for the pair-type methods
 	def cards_frequency
 		hash = Hash.new(0)
