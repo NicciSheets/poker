@@ -146,11 +146,8 @@ class TddPokerHandClass2 < Minitest::Test
             assert_equal("Four of a Kind", hand4.ranker)
             hand5 = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
             assert_equal("Two Pair", hand5.ranker)
-
-
-
-            
-
+            # hand6 = Hand.new([Card.new(:two, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            # assert_equal("Striaght Flush", hand6.ranker)
        end
 
 

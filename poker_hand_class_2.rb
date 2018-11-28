@@ -5,7 +5,6 @@ class Hand
 
 def ranker
 		return_rank = {
-			# straight_flush? => :straight_flush, 
 			[4, 1] => "Four of a Kind",
 			[3, 2] => "Full House",
 			[3, 1] => "Three of a Kind",
@@ -13,8 +12,19 @@ def ranker
 			[1, 2] => "Pair"
 		}
 		return_rank.values_at(self.cards_frequency)[0]
-# end
+end
 
+# HAND_VALUES =
+#     :straight_flush => 9,
+#     :four_of_a_kind => 8,
+#     :full_house => 7,
+#     :flush => 6,
+#     :straight => 5,
+#     :three_of_a_kind => 4,
+#     :two_pair => 3,
+#     :pair => 2,
+#     :high_card => 1
+#  	}
 # def ranker_type
 # 	ranker.values_at(self.cards_frequency).to_s
 # end
