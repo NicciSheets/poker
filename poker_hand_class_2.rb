@@ -57,15 +57,15 @@ OPS = [
     ['Four of a Kind',  :four_of_a_kind? ],
     ['Full House',      :full_house? ],
     # ['Flush',           :flush? ],
-    # ['Straight',        :straight? ],
     ['Three of a Kind', :three_of_a_kind?],
     ['Two Pair',        :two_pair? ],
     ['Pair',            :pair? ],
     ['High Card',       :high_card? ],
+    ['Straight',        :straight? ],
+
   ]
 
   def hand_rating
-  	# p self
     OPS.map { |op|
       (method(op[1]).call()) ? op[0] : false
     }.find { |v| v }
@@ -147,9 +147,12 @@ OPS = [
 
 
 # #for each 2 consecutive card values, compares the previous value with the current value; if (previous+1==current) then it is a straight (bc the values are one after another consecutiviely )
-# 	def straight?
-# 		cards_values.each_cons(2)  {|previous, current| (previous.to_i + 1) == current.to_i}
-#    	end
+	def straight?
+		# p cards_values.each_cons(4) {|blah| "blah"}
+		cards_values.each_cons(4)  {|previous, current| (previous.to_i + 1) == current.to_i}
+
+		return true
+   	end
 
 
 # # if it's true for straight? && flush?? then it is a straight flush
