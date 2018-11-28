@@ -56,12 +56,12 @@ OPS = [
     # ['Straight Flush',  :straight_flush? ],
     ['Four of a Kind',  :four_of_a_kind? ],
     ['Full House',      :full_house? ],
-    # ['Flush',           :flush? ],
+    ['Flush',           :flush? ],
     ['Three of a Kind', :three_of_a_kind?],
     ['Two Pair',        :two_pair? ],
     ['Pair',            :pair? ],
     ['High Card',       :high_card? ],
-    ['Straight',        :straight? ],
+    ['Straight',        :straight? ]
 
   ]
 
@@ -141,9 +141,9 @@ OPS = [
 		
 
 # if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
-# 	def flush?
-# 		cards_suits.uniq.length == 1
-# 	end
+	def flush?
+		cards_suits.uniq.length == 1
+	end
 
 
 # #for each 2 consecutive card values, compares the previous value with the current value; if (previous+1==current) then it is a straight (bc the values are one after another consecutiviely )
