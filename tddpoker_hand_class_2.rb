@@ -105,7 +105,7 @@ class TddPokerHandClass2 < Minitest::Test
             hand = Hand.new([Card.new(:two, :diamonds), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             # p "hand is #{hand}"
             # p "hand.straight? is hand.straight?"
-            assert_equal(true, hand.straight?)
+            assert_equal(true, hand.straight?[0])
             # assert_equal("Straight", hand.straight?)
             # p "hand.straight? is #{hand.straight?}"
             # assert_equal("6", hand.cards_values[-1])
@@ -114,7 +114,7 @@ class TddPokerHandClass2 < Minitest::Test
         def test_flush?
             hand = Hand.new([Card.new(:two, :clubs), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             # p "hand.flush? is #{hand.flush?}"
-            assert_equal(true, hand.flush?)
+            assert_equal(true, hand.flush?[0])
             # assert_equal("Flush", hand.flush?)
             # assert_equal("C", hand.cards_suits[-1])
             # assert_equal("9", hand.cards_values[-1])
@@ -124,7 +124,7 @@ class TddPokerHandClass2 < Minitest::Test
 
         def test_straight_flush?
             hand = Hand.new([Card.new(:two, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            assert_equal(true, hand.straight_flush?)
+            assert_equal(true, hand.straight_flush?[0])
             # assert_equal("Straight Flush", hand.straight_flush?)
             # p "hand.straight_flush? is #{hand.straight_flush?}"
             # assert_equal("6", hand.cards_values[-1])
@@ -141,7 +141,7 @@ class TddPokerHandClass2 < Minitest::Test
         #     # assert_equal("JC", hand.high_card?[2])
         # end
 
-        def test_hand_values
+        def test_hand_rating
             hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
             assert_equal("Pair", hand.hand_rating)
             hand2 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
@@ -176,7 +176,14 @@ class TddPokerHandClass2 < Minitest::Test
             assert_equal("Straight Flush", hand16.hand_rating)
        end
 
-
+       def test_hand_scoring
+            hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
+            assert_equal(2, hand.score_rating)
+            hand2 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
+            assert_equal(7, hand2.score_rating)
+            hand3 = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            assert_equal(4, hand3.score_rating) 
+        end
         
 
 end

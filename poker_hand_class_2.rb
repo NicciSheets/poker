@@ -5,23 +5,28 @@ class Hand
 
 
 OPS =
-    [['Straight Flush', :straight_flush? ],
+    [['Straight Flush', :straight_flush?],
 	['Four of a Kind',  :four_of_a_kind?],
     ['Full House',      :full_house?],
-    ['Flush',           :flush? ],
-    ['Straight',        :straight? ],
+    ['Flush',           :flush?],
+    ['Straight',        :straight?],
     ['Three of a Kind', :three_of_a_kind?],
     ['Two Pair',        :two_pair?],
-    ['Pair',            :pair? ],
+    ['Pair',            :pair?],
     # ['High Card',       :high_card? ]
   ]
 
-  def hand_rating
-    OPS.map { |op|
-      (method(op[1]).call()) ? op[0] : false
-    }.find { |v| v }
-  end
+ 	def hand_rating
+    	OPS.map { |op| (method(op[1]).call()) ? op[0] : false }.find { |v| v }
+  	end
 
+ 	def score
+        OPS.map { |op| method(op[1]).call()}.find([0]) { |score| score }
+    end
+
+    def score_rating
+    	score[1][0]
+    end
 # @cards_sorted gives us each of the 5 cards and their object id (<Card...@value=...@suit=...>)
 # @cards_values gives us each card value once the @cards_sorted are sorted according to their poker value
 # @cards_suits gives us each of the card's suits from the 5 card hand
@@ -56,7 +61,7 @@ OPS =
 # uses the already defined pair and three of a kind? methods to determine if is a full house; returns first the pair value, then the three of a kind value
   	def full_house?
 		if @frequency.values.length == 2 && @frequency.values.include?(2)
-			return [true, [cards_frequency]]
+			return [true, [7, cards_frequency]]
 		end
 		false
 	end
@@ -65,7 +70,7 @@ OPS =
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
 		if (@frequency.values.length == 4 && @frequency.values.include?(2))
-			return [true, [cards_frequency]]
+			return [true, [2, cards_frequency]]
 		end
 		false
 	end 
@@ -74,7 +79,7 @@ OPS =
 # returns true if there are 3 values the same in the hash and then it gives the value of the 3 matching cards in the last index of array 
 	def three_of_a_kind?
 		if @frequency.values.uniq.include?(3)
-			return [true, [cards_frequency]]
+			return [true, [4, cards_frequency]]
 		end
 		false
 	end
@@ -83,7 +88,7 @@ OPS =
 # returns true if there are 4 values the same in the hash and then it gives teh value of the 4 matching cards in the last index of the array 
 	def four_of_a_kind?
 		if @frequency.values.uniq.include?(4)
-			return [true, [cards_frequency]]
+			return [true, [8, cards_frequency]]
 		end
 		false
 	end
@@ -93,7 +98,7 @@ OPS =
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
 		if (@frequency.values.length == 3 && @frequency.values.include?(2))
-			return [true, [cards_frequency]]
+			return [true, [3, cards_frequency]]
 		end
 		false
 	end		
@@ -102,7 +107,7 @@ OPS =
 # if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
 	def flush?
 		if cards_suits.uniq.length == 1
-			return true
+			return [true, [6, cards_frequency]]
 		end
 		false
 	end
@@ -114,7 +119,7 @@ OPS =
     	if my_cards.uniq.length == 5 
     		cards_sorted.each_with_index do |card, index|
     			next if index + 1 == cards_sorted.length
-    			return true if Card::POKER_VALUES_STRING[cards_sorted[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1
+    			return [true, [5, cards_frequency]] if Card::POKER_VALUES_STRING[cards_sorted[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1
     		end
     		false
     	end
@@ -128,7 +133,7 @@ OPS =
       		next if index + 1 == cards_sorted.length
   			return false unless (Card::POKER_VALUES_STRING[cards_sorted[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1) && (cards_suits.uniq.length == 1)
   		end
-  		true
+  		[true, [9, cards_frequency]]
   	end
      
      
