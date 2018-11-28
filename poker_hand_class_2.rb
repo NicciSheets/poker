@@ -3,55 +3,7 @@ require_relative "poker_deck_class.rb"
 
 class Hand  	
 
-# def ranker
-# 		return_rank = {
-# 			[4, 1] => :four_of_a_kind,
-# 			[3, 2] => :full_house,
-# 			[3, 1, 1] => :three_of_a_kind,
-# 			[2, 2, 1] => :two_pair,
-# 			[2, 1, 1, 1] => :pair,
-# 			[1, 1, 1, 1, 1] => :high_card
-# 		}
-# 		return_rank.values_at(self.cards_frequency)[0]
-# end
 
-# def ranker2
-# 	return_rank = {
-# 		:straight_flush => straight_flush?,
-# 		:straight => straight?,
-# 		:flush => flush?
-# 	}
-# 	return_rank.values_at(self)
-# end
-
-# def rrranks
-# 	[:straight_flush, :four_of_a_kind, :full_house, :flush, :straight, :three_of_a_kind, :two_pair, :pair, :high_card]
-# end
-
-# def rrranksss
-# 	rrranks.index(ranker)
-# 	rrranks.index(ranker2)
-# end
-
-# HAND_VALUES ={
-#     :straight_flush => 9,
-#     :four_of_a_kind => 8,
-#     :full_house => 7,
-#     :flush => 6,
-#     :straight => 5,
-#     :three_of_a_kind => 4,
-#     :two_pair => 3,
-#     :pair => 2,
-#     :high_card => 1
-#  	}
-
-# # def ranks
-# # 	HAND_VALUES.values_at(self.rrranksss)
-# # end
-
-# def selfish
-# 	self
-# end
 OPS =
     [['Straight Flush', :straight_flush? ],
 	['Four of a Kind',  :four_of_a_kind? ],
@@ -113,8 +65,6 @@ OPS =
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
 		if (@frequency.length == 4 && @frequency.include?(2))
-			# p "if (@frequency.length == 4 && @frequency.include?(2)) is #{(@frequency.length == 4 && @frequency.include?(2))}"
-
 			return true
 		end
 		false
@@ -136,7 +86,6 @@ OPS =
 # this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
-		# p @frequency
 		if (@frequency.length == 3 && @frequency.include?(2))
 			return true
 		end
@@ -175,12 +124,6 @@ OPS =
   		end
   	end
      
-      
-# this is used if there are no winning hand options, the high card is determined only from the larger cards (10 and up)
-   	# def high_card?
-   		
-   	# 	(cards_sorted.map {|card| Card::POKER_VALUES_STRING[card.value]}).max
-   	# end
-
+     
 end
 
