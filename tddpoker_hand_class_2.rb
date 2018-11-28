@@ -41,59 +41,61 @@ class TddPokerHandClass2 < Minitest::Test
         end
 
 
-        # def test_four_of_a_kind?
-        #     hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-        #     # p "hand.four_of_a_kind? is #{hand.four_of_a_kind?}"
-        #     assert_equal(true, hand.four_of_a_kind?)
-        #     # assert_equal("Four of a Kind", hand.four_of_a_kind?)
-        #     # assert_equal("2", hand.four_of_a_kind?[2])
-        #     # assert_equal("8", hand.cards_values[-1])
-        # end
+        def test_four_of_a_kind?
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            # p "hand.four_of_a_kind? is #{hand.four_of_a_kind?}"
+            assert_equal(true, hand.four_of_a_kind?)
+            # assert_equal("Four of a Kind", hand.four_of_a_kind?)
+            # assert_equal("2", hand.four_of_a_kind?[2])
+            # assert_equal("8", hand.cards_values[-1])
+        end
            
 
 
-        # def test_full_house?
-        #     hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
-        #     # p "hand.full_house? is #{hand.full_house?}"
-        #     assert_equal(true, hand.full_house?)
-        #     # assert_equal("Full House", hand.full_house?[1])
-        #     # the first set is the pair, the second set is the three of a kind
-        #     # assert_equal("Pair 8", hand.full_house?[2][0])
-        #     # assert_equal("Three of a Kind 2", hand.full_house?[2][1])
-        #     # assert_equal("8", hand.cards_values[-1])
-        # end
+        def test_full_house?
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
+            # p "hand.full_house? is #{hand.full_house?}"
+            p hand
+            p hand.full_house?
+            assert_equal(true, hand.full_house?)
+            # assert_equal("Full House", hand.full_house?[1])
+            # the first set is the pair, the second set is the three of a kind
+            # assert_equal("Pair 8", hand.full_house?[2][0])
+            # assert_equal("Three of a Kind 2", hand.full_house?[2][1])
+            # assert_equal("8", hand.cards_values[-1])
+        end
 
    
 
-        # def test_three_of_a_kind?
-        #     hand = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-        #     # p "hand.three_of_a_kind? is #{hand.three_of_a_kind?}"
-        #     assert_equal(true, hand.three_of_a_kind?)
-        #     # assert_equal("Three of a Kind", hand.three_of_a_kind?)
-        #     # assert_equal("2", hand.three_of_a_kind?[2])
-        #     # assert_equal("8", hand.cards_values[-1])
-        # end
+        def test_three_of_a_kind?
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            # p "hand.three_of_a_kind? is #{hand.three_of_a_kind?}"
+            assert_equal(true, hand.three_of_a_kind?)
+            # assert_equal("Three of a Kind", hand.three_of_a_kind?)
+            # assert_equal("2", hand.three_of_a_kind?[2])
+            # assert_equal("8", hand.cards_values[-1])
+        end
                   
 
-        # def test_two_pair?
-        #     hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
-        #     # p "hand.two_pair? is #{hand.two_pair?}"
-        #     assert_equal(true, hand.two_pair?)
-        #     # assert_equal("Two Pair", hand.two_pair?)
-        #     # assert_equal("2", hand.two_pair?[2][0])
-        #     # assert_equal("8", hand.two_pair?[2][1])
-        #     # assert_equal("J", hand.cards_values[-1])
-        # end
+        def test_two_pair?
+            hand = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
+            # p "hand.two_pair? is #{hand.two_pair?}"
+            assert_equal(true, hand.two_pair?)
+            # assert_equal("Two Pair", hand.two_pair?)
+            # assert_equal("2", hand.two_pair?[2][0])
+            # assert_equal("8", hand.two_pair?[2][1])
+            # assert_equal("J", hand.cards_values[-1])
+        end
       
               
-        # def test_pair?
-        #     hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
-        #     # p "hand.pair? is #{hand.pair?}"
-        #     assert_equal(true, hand.pair?)
-        #     # assert_equal("Pair", hand.pair?)
-        #     # assert_equal("7", hand.pair?[2])
-        #     # assert_equal("8", hand.cards_values[-1]) 
-        # end
+        def test_pair?
+            hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
+            # p "hand.pair? is #{hand.pair?}"
+            assert_equal(true, hand.pair?)
+            # assert_equal("Pair", hand.pair?)
+            # assert_equal("7", hand.pair?[2])
+            # assert_equal("8", hand.cards_values[-1]) 
+        end
 
     
         # def test_straight?
@@ -125,13 +127,14 @@ class TddPokerHandClass2 < Minitest::Test
         #     # assert_equal(1, hand.cards_suits.uniq.length)
         # end
 
-        # def test_high_card?
-        #     hand = Hand.new([Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:five, :spades), Card.new(:jack, :clubs), Card.new(:six, :diamonds)])
-        #     # p "hand.high_card? is #{hand.high_card?}"
-        #     assert_equal(true, hand.high_card?)
-        #     # assert_equal("High Card", hand.high_card?)
-        #     # assert_equal("JC", hand.high_card?[2])
-        # end
+        def test_high_card?
+            hand = Hand.new([Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:five, :spades), Card.new(:jack, :clubs), Card.new(:six, :diamonds)])
+            # p "hand.high_card? is #{hand.high_card?}"
+            # p hand.high_card?
+            assert_equal(true, hand.high_card?)
+            # assert_equal("High Card", hand.high_card?)
+            # assert_equal("JC", hand.high_card?[2])
+        end
 
         def test_hand_values
             hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])
@@ -155,18 +158,8 @@ class TddPokerHandClass2 < Minitest::Test
             # p hand5.hand_rating
             # p hand5.two_pair?
             assert_equal("Two Pair", hand5.hand_rating)
-            # hand6 = Hand.new([Card.new(:two, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            # p hand6.selfish
-            # assert_equal(:straight_flush, hand6.ranker2)
-            # # hand5.selfish
-            # # hand4.selfish
-            # hand00 = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:jack, :hearts)])
-            # assert_equal(:two_pair, hand00.ranker)
-            # # p hand00.selfish
-            # hand01 = Hand.new([Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:five, :spades), Card.new(:jack, :clubs), Card.new(:six, :diamonds)])
-            # assert_equal(:high_card, hand01.ranker)
-            # # p hand01.rrranksss
-
+            hand6 = Hand.new([Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:five, :spades), Card.new(:jack, :clubs), Card.new(:six, :diamonds)])
+            assert_equal("High Card", hand6.hand_rating)
 
        end
 

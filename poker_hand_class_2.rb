@@ -104,7 +104,9 @@ OPS = [
 
 # uses the already defined pair and three of a kind? methods to determine if is a full house; returns first the pair value, then the three of a kind value
   	def full_house?
-		pair? && three_of_a_kind?
+		if @frequency.length == 2 && @frequency.include?(2)
+			return true
+		end
 	end
 
 
