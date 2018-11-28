@@ -52,17 +52,16 @@ class Hand
 # def selfish
 # 	self
 # end
-OPS = [
-    # ['Straight Flush',  :straight_flush? ],
-    ['Four of a Kind',  :four_of_a_kind? ],
+OPS =
+    [['Straight Flush', :straight_flush? ],
+	['Four of a Kind',  :four_of_a_kind? ],
     ['Full House',      :full_house? ],
     ['Flush',           :flush? ],
+    ['Straight',        :straight? ],
     ['Three of a Kind', :three_of_a_kind?],
     ['Two Pair',        :two_pair? ],
     ['Pair',            :pair? ],
-    ['High Card',       :high_card? ],
-    ['Straight',        :straight? ]
-
+    # ['High Card',       :high_card? ]
   ]
 
   def hand_rating
@@ -85,7 +84,7 @@ OPS = [
 	end
 # Card::POKER_VALUES_STRING is a compound expression of a constant reference (POKER_VALUES_STRING) is the constant and it returns the value of the constant
 
-	attr_accessor :cards_values, :cards_sorted, :cards_suits
+	attr_accessor :cards_values, :cards_sorted, :cards_suits, :cards
 
 
 # refactored out this commonality for the pair-type methods
@@ -107,14 +106,18 @@ OPS = [
 		if @frequency.length == 2 && @frequency.include?(2)
 			return true
 		end
+		false
 	end
 
 
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
-		if @frequency.length == 4 && @frequency.include?(2)
+		if (@frequency.length == 4 && @frequency.include?(2))
+			# p "if (@frequency.length == 4 && @frequency.include?(2)) is #{(@frequency.length == 4 && @frequency.include?(2))}"
+
 			return true
 		end
+		false
 	end 
 
 
@@ -134,37 +137,50 @@ OPS = [
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
 		# p @frequency
-		if @frequency.length == 3 && @frequency.include?(2)
+		if (@frequency.length == 3 && @frequency.include?(2))
 			return true
 		end
+		false
 	end		
 		
 
 # if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
 	def flush?
-		cards_suits.uniq.length == 1
+		if cards_suits.uniq.length == 1
+			return true
+		end
+		false
 	end
 
 
 # #for each 2 consecutive card values, compares the previous value with the current value; if (previous+1==current) then it is a straight (bc the values are one after another consecutiviely )
 	def straight?
-		# p cards_values.each_cons(4) {|blah| "blah"}
-		cards_values.each_cons(4)  {|previous, current| (previous.to_i + 1) == current.to_i}
-
-		return true
-   	end
+    	my_cards = cards_sorted.map {|card| Card::POKER_VALUES_STRING[card.value]}
+    	if my_cards.uniq.length == 5 
+    		cards_sorted.each_with_index do |card, index|
+    			next if index + 1 == cards_sorted.length
+    			return true if Card::POKER_VALUES_STRING[cards_sorted[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1
+    		end
+    		false
+    	end
+ 	end
+  
 
 
 # # if it's true for straight? && flush?? then it is a straight flush
-#    	def straight_flush?
-#    		straight? && flush?
-#    	end
-
-
+   	def straight_flush?
+   		cards_sorted.each_with_index do |card, index|
+      		next if index + 1 == cards_sorted.length
+  			return false unless (Card::POKER_VALUES_STRING[cards_sorted[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1) && (cards_suits.uniq.length == 1)
+  		end
+  	end
+     
+      
 # this is used if there are no winning hand options, the high card is determined only from the larger cards (10 and up)
-   	def high_card?
-   		(cards_sorted.map {|card| Card::POKER_VALUES_STRING[card.value]}).last >= 9
-   	end
+   	# def high_card?
+   		
+   	# 	(cards_sorted.map {|card| Card::POKER_VALUES_STRING[card.value]}).max
+   	# end
 
 end
 
