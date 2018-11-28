@@ -6,12 +6,12 @@ class Hand
 
 OPS =
     [['Straight Flush', :straight_flush? ],
-	['Four of a Kind',  :four_of_a_kind? ],
-    ['Full House',      :full_house? ],
+	['Four of a Kind',  :four_of_a_kind?],
+    ['Full House',      :full_house?],
     ['Flush',           :flush? ],
     ['Straight',        :straight? ],
     ['Three of a Kind', :three_of_a_kind?],
-    ['Two Pair',        :two_pair? ],
+    ['Two Pair',        :two_pair?],
     ['Pair',            :pair? ],
     # ['High Card',       :high_card? ]
   ]
@@ -43,7 +43,7 @@ OPS =
 	def cards_frequency
 		hash = Hash.new(0)
 		cards_values.each {|item| hash[item] += 1}
-		hash.values
+		hash
 		# hash.values.sort.reverse
 	end
 
@@ -55,8 +55,8 @@ OPS =
 
 # uses the already defined pair and three of a kind? methods to determine if is a full house; returns first the pair value, then the three of a kind value
   	def full_house?
-		if @frequency.length == 2 && @frequency.include?(2)
-			return true
+		if @frequency.values.length == 2 && @frequency.values.include?(2)
+			return [true, [cards_frequency]]
 		end
 		false
 	end
@@ -64,8 +64,8 @@ OPS =
 
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
-		if (@frequency.length == 4 && @frequency.include?(2))
-			return true
+		if (@frequency.values.length == 4 && @frequency.values.include?(2))
+			return [true, [cards_frequency]]
 		end
 		false
 	end 
@@ -73,21 +73,27 @@ OPS =
 
 # returns true if there are 3 values the same in the hash and then it gives the value of the 3 matching cards in the last index of array 
 	def three_of_a_kind?
-		@frequency.uniq.include?(3)
+		if @frequency.values.uniq.include?(3)
+			return [true, [cards_frequency]]
+		end
+		false
 	end
 
 	
 # returns true if there are 4 values the same in the hash and then it gives teh value of the 4 matching cards in the last index of the array 
 	def four_of_a_kind?
-		@frequency.uniq.include?(4)
+		if @frequency.values.uniq.include?(4)
+			return [true, [cards_frequency]]
+		end
+		false
 	end
 	
 
 # this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
-		if (@frequency.length == 3 && @frequency.include?(2))
-			return true
+		if (@frequency.values.length == 3 && @frequency.values.include?(2))
+			return [true, [cards_frequency]]
 		end
 		false
 	end		
