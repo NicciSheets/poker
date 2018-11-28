@@ -122,6 +122,7 @@ OPS =
       		next if index + 1 == cards_sorted.length
   			return false unless (Card::POKER_VALUES_STRING[cards_sorted[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1) && (cards_suits.uniq.length == 1)
   		end
+  		true
   	end
      
      
