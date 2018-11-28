@@ -183,6 +183,16 @@ class TddPokerHandClass2 < Minitest::Test
             assert_equal(7, hand2.score_rating)
             hand3 = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
             assert_equal(4, hand3.score_rating) 
+            hand4 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            assert_equal(8, hand4.score_rating)
+            hand5 = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
+            assert_equal(3, hand5.score_rating)
+            hand7 = Hand.new([Card.new(:two, :diamonds), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            assert_equal(5, hand7.score_rating)
+            hand8 = Hand.new([Card.new(:two, :clubs), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            assert_equal(6, hand8.score_rating)
+            hand9 = Hand.new([Card.new(:two, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            assert_equal(9, hand9.score_rating)
         end
         
 
