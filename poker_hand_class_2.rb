@@ -16,14 +16,17 @@ OPS =
     ['High Card',       :high_card?]
   ]
 
+# this goes through a dealt or given hand and determines what poker hand it is based on the methods written below
  	def hand_rating
     	OPS.map { |op| (method(op[1]).call()) ? op[0] : false }.find { |v| v }
   	end
 
+# this gives you everythign that is returned from the poker hand, whether it is the hand or not, the score rating of that hand, the highest card(s) for tieing purposes
  	def score
         OPS.map { |op| method(op[1]).call()}.find([0]) { |score| score }
     end
 
+# this gives you the ranking for each poker hand
     def score_rating
     	score[1][0]
     end
@@ -31,6 +34,11 @@ OPS =
 # use this one if the matched cards in pairs or two pair come back as tie
     def last_card_tie
     	score[2][0]
+    end
+
+# this allows comparison of the lower value pair from two pair in case of tie
+    def two_pair_lower_val
+    	score[1][2]
     end
 
 # use this one for the pair, three of a kind, four of a kind, two pair, flush, straight, and straight flush if tied
@@ -63,9 +71,19 @@ OPS =
 		# hash.values.sort.reverse
 	end
 
+
+# returns the highest single card left from pair and two pair in case hand ties compoletely
 	def pair_matcher_tie
-		cards_frequency.select {|k, v| v == 1 }
+		cards_frequency.select {|k, v| v == 1}
 	end
+
+
+# returns the highest pair value for the two pair in the spot needed for the score tie, and gives a second value for comparing the second, lower value pair
+	def two_pair_tie
+		cards_frequency.select {|k, v| v == 2}.keys
+	end
+
+
 # used to deal 5 cards into the hand; deck = Deck.all_cards.shuffle
 	def self.deal(deck)
 		Hand.new(deck.take(5))
@@ -112,7 +130,7 @@ OPS =
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
 		if (@frequency.values.length == 3 && @frequency.values.include?(2))
-			return [true, [3, cards_frequency]]
+			return [true, [3, two_pair_tie[-1], two_pair_tie[0], [cards_frequency.key(1)]]]
 		end
 		false
 	end		
@@ -150,7 +168,7 @@ OPS =
 # this just gives you the true if none of the other methods come back as true, then returns the highest value card of the hand 
     def high_card?
    		if result = cards_sorted
-   			return [true, [1, cards_sorted[-1]]]
+   			return [true, [1, cards_frequency.keys[-1]]]
    		end
    		false
    	end
