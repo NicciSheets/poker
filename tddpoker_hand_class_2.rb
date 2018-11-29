@@ -228,4 +228,9 @@ class TddPokerHandClass2 < Minitest::Test
             hand17 = Hand.new([Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:five, :spades), Card.new(:jack, :clubs), Card.new(:six, :diamonds)])
             assert_equal("J", hand17.poker_hand_tie)
         end
+
+        def test_two_pair_lower_value_for_tie
+            hand5 = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
+            assert_equal("2", hand5.two_pair_lower_val)
+        end
 end
