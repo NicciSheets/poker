@@ -90,65 +90,44 @@ OPS =
 # uses the already defined pair and three of a kind? methods to determine if is a full house; returns first the pair value, then the three of a kind value
 # use only the 3 of a kind to determine tie breaker between two full houses 
   	def full_house?
-		if @frequency.values.length == 2 && @frequency.values.include?(2)
-			return [true, [7, @frequency.key(3)]]
-		end
-		false
+		(@frequency.values.length == 2 && @frequency.values.include?(2)) ? [true, [7, @frequency.key(3)]] : false
 	end
 
 
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
-		if (@frequency.length == 4 && @frequency.values.include?(2))
-			return [true, [2, @frequency.key(2)], pair_matcher_tie.keys[-1]]
-		end
-		false
+		(@frequency.length == 4 && @frequency.values.include?(2)) ? [true, [2, @frequency.key(2)], pair_matcher_tie.keys[-1]] : false
 	end 
 
 
 # returns true if there are 3 values the same in the hash and then it gives the value of the 3 matching cards in the last index of array 
 	def three_of_a_kind?
-		if @frequency.values.uniq.include?(3)
-			return [true, [4, @frequency.key(3)]]
-		end
-		false
+		@frequency.values.uniq.include?(3) ? [true, [4, @frequency.key(3)]] : false
 	end
 
 	
 # returns true if there are 4 values the same in the hash and then it gives teh value of the 4 matching cards in the last index of the array 
 	def four_of_a_kind?
-		if @frequency.values.uniq.include?(4)
-			return [true, [8, @frequency.key(4)]]
-		end
-		false
+		@frequency.values.uniq.include?(4) ? [true, [8, @frequency.key(4)]] : false
 	end
 	
 
 # this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
-		if (@frequency.values.length == 3 && @frequency.values.include?(2))
-			return [true, [3, two_pair_tie[-1], two_pair_tie[0]], @frequency.key(1)]
-		end
-		false
+		(@frequency.values.length == 3 && @frequency.values.include?(2)) ? [true, [3, two_pair_tie[-1], two_pair_tie[0]], @frequency.key(1)] : false
 	end		
 		
 
 # if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
 	def flush?
-		if cards_suits.uniq.length == 1
-			return [true, [6, @frequency.keys[-1]]]
-		end
-		false
+		cards_suits.uniq.length == 1 ? [true, [6, @frequency.keys[-1]]] : false
 	end
 
 
 # #for each 2 consecutive card values, compares the previous value with the current value; if (previous+1==current) then it is a straight (bc the values are one after another consecutiviely )
 	def straight?
-    	if cards_values.each_cons(2).all? {|c1,c2| c2.to_i - c1.to_i == 1 }
-   		 	return [true, [5, @frequency.keys[-1]]]
-   		 end
-   		 false
+    	cards_values.each_cons(2).all? {|c1,c2| c2.to_i - c1.to_i == 1 } ? [true, [5, @frequency.keys[-1]]] : false
  	end
   
 
@@ -165,11 +144,12 @@ OPS =
 
 # this just gives you the true if none of the other methods come back as true, then returns the highest value card of the hand 
     def high_card?
-   		if result = cards_sorted
-   			return [true, [1, @frequency.keys[-1]]]
-   		end
-   		false
+   		result = cards_sorted ? [true, [1, @frequency.keys[-1]]] : false
    	end
+
+
+   	
+
 
 end
 

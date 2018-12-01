@@ -239,5 +239,12 @@ class TddPokerHandClass2 < Minitest::Test
             assert_equal("J", hand5.last_card_tie)
             hand10 = Hand.new([Card.new(:two, :clubs), Card.new(:three, :hearts), Card.new(:six, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("5", hand10.last_card_tie)
+            deck = Deck.all_cards.shuffle
+            hand99 = Hand.deal(deck)
+            p hand99
+            p hand99.hand_rating
+            p hand99.score
         end
+
+
 end
