@@ -33,7 +33,7 @@ OPS =
 
 # use this one if the matched cards in pairs or two pair come back as tie
     def last_card_tie
-    	score[2][0]
+    	score[2]
     end
 
 # this allows comparison of the lower value pair from two pair in case of tie
@@ -100,7 +100,7 @@ OPS =
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
 		if (@frequency.length == 4 && @frequency.values.include?(2))
-			return [true, [2, @frequency.key(2),[pair_matcher_tie.keys[-1]]]]
+			return [true, [2, @frequency.key(2)], pair_matcher_tie.keys[-1]]
 		end
 		false
 	end 
@@ -118,7 +118,7 @@ OPS =
 # returns true if there are 4 values the same in the hash and then it gives teh value of the 4 matching cards in the last index of the array 
 	def four_of_a_kind?
 		if @frequency.values.uniq.include?(4)
-			return [true, [8, @frequency.key(4), [@frequency.key(1)]]]
+			return [true, [8, @frequency.key(4)]]
 		end
 		false
 	end
@@ -128,7 +128,7 @@ OPS =
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
 		if (@frequency.values.length == 3 && @frequency.values.include?(2))
-			return [true, [3, two_pair_tie[-1], two_pair_tie[0], [@frequency.key(1)]]]
+			return [true, [3, two_pair_tie[-1], two_pair_tie[0]], @frequency.key(1)]
 		end
 		false
 	end		
