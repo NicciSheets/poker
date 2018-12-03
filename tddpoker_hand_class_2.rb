@@ -165,12 +165,9 @@ class TddPokerHandClass2 < Minitest::Test
             hand10 = Hand.new([Card.new(:two, :clubs), Card.new(:three, :hearts), Card.new(:six, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("Pair", hand10.hand_rating)
             # p hand10.score
-            # p hand10.poker_hand_tie
-            # p hand10.poker_hand_tie2
             hand11 = Hand.new([Card.new(:four, :hearts), Card.new(:six, :diamonds), Card.new(:six, :hearts), Card.new(:four, :clubs), Card.new(:six, :clubs)])
             assert_equal("Full House", hand11.hand_rating)
             # p hand11.score
-            # p hand11.poker_hand_tie
             hand12 = Hand.new([Card.new(:five, :hearts), Card.new(:three, :clubs), Card.new(:five, :diamonds), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("Three of a Kind", hand12.hand_rating)
             # p hand12.score
@@ -180,12 +177,9 @@ class TddPokerHandClass2 < Minitest::Test
             hand13 = Hand.new([Card.new(:queen, :spades), Card.new(:two, :clubs), Card.new(:four, :clubs), Card.new(:four, :diamonds), Card.new(:queen, :clubs)])
             assert_equal("Two Pair", hand13.hand_rating)
             # p hand13.score
-            # p hand13.poker_hand_tie
-            # p hand13.poker_hand_tie2
             hand14 = Hand.new([Card.new(:eight, :diamonds), Card.new(:seven, :hearts), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("Straight", hand14.hand_rating)
             # p hand14.score
-            # p hand14.poker_hand_tie
             hand15 = Hand.new([Card.new(:ace, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:seven, :clubs), Card.new(:six, :clubs)])
             assert_equal("Flush", hand15.hand_rating)
             # p hand15.score

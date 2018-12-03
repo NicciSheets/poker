@@ -33,4 +33,5 @@ class Deck
 	def take(n)
 		cards.shift(n)
 	end
+
 end

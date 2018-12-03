@@ -79,6 +79,15 @@ attr_reader :value, :suit
   end
 
 
+# combines the two strings (value and suit) for Cards
+  def to_s
+    VALUE_STRING[value] + SUIT_STRING[suit]
+  end
+  
+end
+
+
+
 # checks equality of self card with other card
   # def ==(other_card)
   #   (self.suit == other_card.suit) && (self.value == other_card.value)
@@ -94,12 +103,3 @@ attr_reader :value, :suit
   #   POKER_VALUES_STRING[self.value] > POKER_VALUES_STRING[other_card.value]
   # end
  
-
-# combines the two strings (value and suit) for Cards
-  def to_s
-    VALUE_STRING[value] + SUIT_STRING[suit]
-  end
-
-end
-
-

@@ -36,4 +36,5 @@ class TddPokerDeckClass < Minitest::Test
     	taken_cards = x.take(5)
     	assert_equal(5, taken_cards.length)
     end
+    
 end
