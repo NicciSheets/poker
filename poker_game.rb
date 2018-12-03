@@ -8,8 +8,7 @@ require_relative "poker_hand_class_2.rb"
    	def game_output
 		@black = Hand.deal()
 		@white = Hand.deal()
-		p "@black is #{@black.hand_rating} and #{@black.score} and #{@black.cards_sorted}"
-		p "@white is #{@white.hand_rating} and #{@white.score} and #{@white.cards_sorted}"
+		p "@black is #{@black.hand_rating} and #{@black.score} and @white is #{@white.hand_rating} and #{@white.score}"
 	end   	
 
 
@@ -29,7 +28,8 @@ require_relative "poker_hand_class_2.rb"
 	end
 	
 
-	def winner
+	def winner(game_output)
+		game_output = game_output
 		compared = game_play(game_output)
 		if compared == 1
 			"Black Wins"

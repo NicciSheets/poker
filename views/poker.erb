@@ -6,7 +6,12 @@
     
 	<form method="post" action="/poker">
     <body>
-    	<%= "#{winner} #{@black.cards} #{@white.cards}" %>
+    	<% new_game = game_output %>
+    	<%= new_game %>
+    	<%= winner(new_game) %>
+    	
+    	
+    	
     </body>
 	</form>
 </html>
