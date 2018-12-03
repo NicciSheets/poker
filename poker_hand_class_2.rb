@@ -64,7 +64,7 @@ OPS =
 
 # returns the highest single card left from pair and two pair in case hand ties compoletely
 	def pair_matcher_tie
-		@frequency.select {|k, v| v == 1}
+		@frequency.select {|k, v| v == 1}.keys.reverse
 	end
 
 
@@ -88,7 +88,7 @@ OPS =
 # !!!!!!!!!!!!!!!!!! This one must be tested through each index for tie
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
-		(@frequency.length == 4 && @frequency.values.include?(2)) ? [true, [2, [@frequency.key(2), pair_matcher_tie.keys.reverse].flatten]] : false
+		(@frequency.length == 4 && @frequency.values.include?(2)) ? [true, [2, [@frequency.key(2), pair_matcher_tie].flatten]] : false
 	end 
 
 

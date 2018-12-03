@@ -223,6 +223,10 @@ class TddPokerHandClass2 < Minitest::Test
             assert_equal(["A", "3"], hand13.two_pair_tie)
         end
 
+        def test_pair_matcher_tie_return
+            hand13 = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:ace, :clubs), Card.new(:ace, :diamonds), Card.new(:three, :clubs)])
+            assert_equal(["7", "3", "2"], hand13.pair_matcher_tie) 
+        end
 
         def test_poker_hand_highest_card_for_tie
             # hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])                                     
