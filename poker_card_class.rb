@@ -64,9 +64,9 @@ attr_reader :value, :suit
 
 
 # checks equality of self card with other card
-  def ==(other_card)
-    (self.suit == other_card.suit) && (self.value == other_card.value)
-  end
+  # def ==(other_card)
+  #   (self.suit == other_card.suit) && (self.value == other_card.value)
+  # end
 
 
 # compares the poker ranking of two cards
