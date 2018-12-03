@@ -3,6 +3,7 @@ body
   background-color: darkslategrey;
   font-family: 'Quicksand', sans-serif;
   font-size: 1.2rem;
+  color: white;
 }
 
 table
@@ -30,7 +31,7 @@ table
 .title
 {
   font-family: 'Anton', sans-serif;
-  color: darkkhaki;
+  color: #d0433a;
   font-size: 3rem;
 }
 
