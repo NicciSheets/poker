@@ -16,24 +16,38 @@ require_relative "poker_hand_class_2.rb"
 	end   	
 
 	def game_play(game_output)
-        unless @black.hand_rating == @white.hand_rating
-       		return @black.score_rating <=> @white.score_rating
-       	else 
-       		return @black.poker_hand_tie[0] <=> @white.poker_hand_tie[0]
-       		# p "#{@black.poker_hand_tie[0]} and #{@white.poker_hand_tie[0]} and #{@black.poker_hand_tie[0] <=> @white.poker_hand_tie[0]}"
-       	end
-        # p "@black.score_rating is #{@black.score_rating} and @white is #{@white.score_rating}"
-    end
- 
- 	# def game_winner(game_output)
- 	# 	if @black.hand_rating == @white.hand_rating
- 	# 		@black.poker_hand_tie <=> @white.poker_hand_tie	
- 	# 	end
- 	# end
+		if @black.hand_rating == @white.hand_rating
+			if @black.poker_hand_tie2[0] == @white.poker_hand_tie2[0]
+				p "#{@black.poker_hand_tie2[1] <=> @white.poker_hand_tie2[1]} for [1]"
+				return @black.poker_hand_tie2[1] <=> @white.poker_hand_tie2[1]
+			else 
+				p "#{@black.poker_hand_tie2[0] <=> @white.poker_hand_tie2[0]} for [0]"
+				return @black.poker_hand_tie2[0] <=> @white.poker_hand_tie2[0]
+			end
+		else
+			@black.score_rating <=> @white.score_rating
+		end
+	end
 
+
+
+
+    #     unless @black.hand_rating == @white.hand_rating
+    #    		return @black.score_rating <=> @white.score_rating
+    #    	else 
+    #    		if @black.poker_hand_tie[0] == @white.poker_hand_tie[0]
+    #    			p "#{@black.poker_hand_tie[0] == @white.poker_hand_tie[0]}"
+    #    			return @black.poker_hand_tie[1] <=> @white.poker_hand_tie[1]
+    #    			p "#{@black.poker_hand_tie[1] <=> @white.poker_hand_tie[1]}"
+    #    		else
+    #    			return @black.poker_hand_tie[0] <=> @white.poker_hand_tie[0]
+    #    		end
+    #    		# return @black.poker_hand_tie[0] <=> @white.poker_hand_tie[0]
+    #    	end
+    # end
+ 
 
 
 # 1 "Black Wins"......(-1) "White Wins"......0 Tie
 	# p game_output
 	p game_play(game_output)
-	# p game_winner(game_output)

@@ -30,10 +30,16 @@ OPS =
     	score[1][0]
     end
 
+
+
+# this changes the face cards to their poker hand value to be compared
 	def poker_hand_tie2
-		score[1][1][0]
+		cards = poker_hand_tie
+		cards.map {|card| Card::WINNER_STRING[card]}
 	end
-# use this one for the full house, three of a kind, four of a kind, straight and straight flush - the ones that require only one card to determine tie breaker between same hand
+
+
+# this is for if the poker hands tie 
     def poker_hand_tie
     	score[1][1]
     end
@@ -138,4 +144,6 @@ OPS =
     def high_card?
    		result = cards_sorted ? [true, [1, [@frequency.keys.reverse].flatten]] : false
    	end
+
+
 end
