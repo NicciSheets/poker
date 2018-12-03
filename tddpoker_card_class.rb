@@ -36,17 +36,17 @@ class TddPokerCardClass < Minitest::Test
    	# 	assert_equal(false, x==(x2))
    	# end
 
-    def test_poker_ranking
-    	x = Card.new(:two, :spades)
-    	x2 = Card.new(:two, :spades)
-    	assert_nil(nil, x.higher_than?(x2))
-    	x = Card.new(:two, :spades)
-    	x2 = Card.new(:three, :spades)
-    	assert_equal(false, x.higher_than?(x2))
-    	x = Card.new(:king, :spades)
-    	x2 = Card.new(:two, :spades)
-    	assert_equal(true, x.higher_than?(x2))
-    end
+    # def test_poker_ranking
+    # 	x = Card.new(:two, :spades)
+    # 	x2 = Card.new(:two, :spades)
+    # 	assert_nil(nil, x.higher_than?(x2))
+    # 	x = Card.new(:two, :spades)
+    # 	x2 = Card.new(:three, :spades)
+    # 	assert_equal(false, x.higher_than?(x2))
+    # 	x = Card.new(:king, :spades)
+    # 	x2 = Card.new(:two, :spades)
+    # 	assert_equal(true, x.higher_than?(x2))
+    # end
 
     def test_combines_value_and_suit
     	x = Card.new(:two, :spades)

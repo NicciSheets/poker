@@ -86,13 +86,13 @@ attr_reader :value, :suit
 
 
 # compares the poker ranking of two cards
-  def higher_than?(other_card)
-    # p "POKER_VALUES_STRING[self.value] is #{POKER_VALUES_STRING[self.value]}"
-    if POKER_VALUES_STRING[self.value] == POKER_VALUES_STRING[other_card.value]
-      return nil
-    end
-    POKER_VALUES_STRING[self.value] > POKER_VALUES_STRING[other_card.value]
-  end
+  # def higher_than?(other_card)
+  #   # p "POKER_VALUES_STRING[self.value] is #{POKER_VALUES_STRING[self.value]}"
+  #   if POKER_VALUES_STRING[self.value] == POKER_VALUES_STRING[other_card.value]
+  #     return nil
+  #   end
+  #   POKER_VALUES_STRING[self.value] > POKER_VALUES_STRING[other_card.value]
+  # end
  
 
 # combines the two strings (value and suit) for Cards

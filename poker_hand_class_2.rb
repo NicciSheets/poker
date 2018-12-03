@@ -3,7 +3,6 @@ require_relative "poker_deck_class.rb"
 
 class Hand  	
 
-
 OPS =
     [['Straight Flush', :straight_flush?],
 	['Four of a Kind',  :four_of_a_kind?],
@@ -30,14 +29,10 @@ OPS =
     	score[1][0]
     end
 
-
-
 # this changes the face cards to their poker hand value to be compared
 	def poker_hand_tie2
-		cards = poker_hand_tie
-		cards.map {|card| Card::WINNER_STRING[card]}
+		poker_hand_tie.map {|card| Card::WINNER_STRING[card]}
 	end
-
 
 # this is for if the poker hands tie 
     def poker_hand_tie
@@ -75,7 +70,7 @@ OPS =
 
 # returns the highest pair value for the two pair in the spot needed for the score tie, and gives a second value for comparing the second, lower value pair
 	def two_pair_tie
-		@frequency.select {|k, v| v == 2}.keys
+		@frequency.select {|k, v| v == 2}.keys.reverse
 	end
 
 
@@ -110,9 +105,8 @@ OPS =
 	
 # !!!!!!!!!!! this one needs to be compared through each index for highest card if tied
 # this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
-# paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
-		(@frequency.values.length == 3 && @frequency.values.include?(2)) ? [true, [3, [two_pair_tie[-1], two_pair_tie[0], @frequency.key(1)]]] : false
+		(@frequency.values.length == 3 && @frequency.values.include?(2)) ? [true, [3, [two_pair_tie[0], two_pair_tie[-1], @frequency.key(1)]]] : false
 	end		
 		
 

@@ -42,17 +42,6 @@ require_relative "poker_hand_class_2.rb"
 
 
 
-
-	# 			return @black.poker_hand_tie2[1] <=> @white.poker_hand_tie2[1]
-	# 		else 
-	# 			return @black.poker_hand_tie2[0] <=> @white.poker_hand_tie2[0]
-	# 		end
-	# 	else
-	# 		@black.score_rating <=> @white.score_rating
-	# 	end
-	# end
-
-
 # 1 "Black Wins"......(-1) "White Wins"......0 Tie
 	# p game_output
 	# p game_play(game_output)
