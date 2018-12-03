@@ -179,9 +179,9 @@ class TddPokerHandClass2 < Minitest::Test
             # p hand33.score
             hand13 = Hand.new([Card.new(:queen, :spades), Card.new(:two, :clubs), Card.new(:four, :clubs), Card.new(:four, :diamonds), Card.new(:queen, :clubs)])
             assert_equal("Two Pair", hand13.hand_rating)
-            p hand13.score
-            p hand13.poker_hand_tie
-            p hand13.poker_hand_tie2
+            # p hand13.score
+            # p hand13.poker_hand_tie
+            # p hand13.poker_hand_tie2
             hand14 = Hand.new([Card.new(:eight, :diamonds), Card.new(:seven, :hearts), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("Straight", hand14.hand_rating)
             # p hand14.score
