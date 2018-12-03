@@ -40,6 +40,8 @@ require_relative "poker_hand_class_2.rb"
 		end
 	end
 
+	# p game_output
+
 # 1 "Black Wins"......(-1) "White Wins"......0 Tie
 
 # before refactoring the comparison for game_play
