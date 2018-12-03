@@ -13,8 +13,7 @@ OPS =
     ['Three of a Kind', :three_of_a_kind?],
     ['Two Pair',        :two_pair?],
     ['Pair',            :pair?],
-    ['High Card',       :high_card?]
-  ]
+    ['High Card',       :high_card?]]
 
 # this goes through a dealt or given hand and determines what poker hand it is based on the methods written below
  	def hand_rating
@@ -31,17 +30,10 @@ OPS =
     	score[1][0]
     end
 
-# use this one if the matched cards in pairs or two pair come back as tie
-    def last_card_tie
-    	score[2]
-    end
-
-# this allows comparison of the lower value pair from two pair in case of tie
-    def two_pair_lower_val
-    	score[1][2]
-    end
-
-# use this one for the pair, three of a kind, four of a kind, two pair, flush, straight, and straight flush if tied
+	def poker_hand_tie2
+		score[1][1][0]
+	end
+# use this one for the full house, three of a kind, four of a kind, straight and straight flush - the ones that require only one card to determine tie breaker between same hand
     def poker_hand_tie
     	score[1][1]
     end
@@ -89,45 +81,45 @@ OPS =
 # uses the already defined pair and three of a kind? methods to determine if is a full house; score[1][1] returns the 3 of a kind value, score [1][2] returns the pair value
 # use only the 3 of a kind to determine tie breaker between two full houses 
   	def full_house?
-		(@frequency.values.length == 2 && @frequency.values.include?(2)) ? [true, [7, @frequency.key(3)]] : false
+		(@frequency.values.length == 2 && @frequency.values.include?(2)) ? [true, [7, [@frequency.key(3)]]] : false
 	end
 
 # !!!!!!!!!!!!!!!!!! This one must be tested through each index for tie
 # returns true if there are 2 values the same in the hash and then it gives the value of that pair in the last index of array
 	def pair?
-		(@frequency.length == 4 && @frequency.values.include?(2)) ? [true, [2, @frequency.key(2), pair_matcher_tie.keys.reverse].flatten] : false
+		(@frequency.length == 4 && @frequency.values.include?(2)) ? [true, [2, [@frequency.key(2), pair_matcher_tie.keys.reverse].flatten]] : false
 	end 
 
 
 # returns true if there are 3 values the same in the hash and then it gives the value of the 3 matching cards in the last index of array 
 	def three_of_a_kind?
-		@frequency.values.uniq.include?(3) ? [true, [4, @frequency.key(3)]] : false
+		@frequency.values.uniq.include?(3) ? [true, [4, [@frequency.key(3)]]] : false
 	end
 
 	
 # returns true if there are 4 values the same in the hash and then it gives teh value of the 4 matching cards in the last index of the array 
 	def four_of_a_kind?
-		@frequency.values.uniq.include?(4) ? [true, [8, @frequency.key(4)]] : false
+		@frequency.values.uniq.include?(4) ? [true, [8, [@frequency.key(4)]]] : false
 	end
 	
 # !!!!!!!!!!! this one needs to be compared through each index for highest card if tied
 # this will give you the two values that are 2 and one value that is 1 from the hash, meaning there are 2 pairs and one odd card left, which is deleted out 
 # paired.keys will give you each pair values, with paired.keys[0] as the smallest value pair and paired.keys[1] as the largest value pair
 	def two_pair?
-		(@frequency.values.length == 3 && @frequency.values.include?(2)) ? [true, [3, two_pair_tie[-1], two_pair_tie[0], @frequency.key(1)]] : false
+		(@frequency.values.length == 3 && @frequency.values.include?(2)) ? [true, [3, [two_pair_tie[-1], two_pair_tie[0], @frequency.key(1)]]] : false
 	end		
 		
 
 # !!!!!!!!!!!!!!! This one needs to check down index of all cards for tie purposes
 # if the suits of all 5 cards are the same, calling uniq on them will make the length of the array == 1, otherwise it'll be greater than one if it's not a flush
 	def flush?
-		cards_suits.uniq.length == 1 ? [true, [6, @frequency.keys.reverse]] : false
+		cards_suits.uniq.length == 1 ? [true, [6, [@frequency.keys.reverse].flatten]] : false
 	end
 
 
 # #for each 2 consecutive card values, compares the previous value with the current value; if (previous+1==current) then it is a straight (bc the values are one after another consecutiviely )
 	def straight?
-    	cards_values.each_cons(2).all? {|c1,c2| c2.to_i - c1.to_i == 1 } ? [true, [5, @frequency.keys[-1]]] : false
+    	cards_values.each_cons(2).all? {|c1,c2| c2.to_i - c1.to_i == 1 } ? [true, [5, [@frequency.keys[-1]]]] : false
  	end
   
 
@@ -138,12 +130,12 @@ OPS =
       		next if index + 1 == cards_sorted.length
   			return false unless (Card::POKER_VALUES_STRING[cards_sorted[index + 1].value] == Card::POKER_VALUES_STRING[card.value] + 1) && (cards_suits.uniq.length == 1)
   		end
-  		[true, [9, @frequency.keys[-1]]]
+  		[true, [9, [@frequency.keys[-1]]]]
   	end
 
 # !!!!!!!!!!!!!!!!!!!!! This one needs checked through each index for highest card if tied
 # this just gives you the true if none of the other methods come back as true, then returns the highest value card of the hand 
     def high_card?
-   		result = cards_sorted ? [true, [1, @frequency.keys.reverse]] : false
+   		result = cards_sorted ? [true, [1, [@frequency.keys.reverse].flatten]] : false
    	end
 end

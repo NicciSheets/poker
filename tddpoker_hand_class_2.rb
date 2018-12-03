@@ -165,9 +165,12 @@ class TddPokerHandClass2 < Minitest::Test
             hand10 = Hand.new([Card.new(:two, :clubs), Card.new(:three, :hearts), Card.new(:six, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("Pair", hand10.hand_rating)
             # p hand10.score
+            # p hand10.poker_hand_tie
+            # p hand10.poker_hand_tie2
             hand11 = Hand.new([Card.new(:four, :hearts), Card.new(:six, :diamonds), Card.new(:six, :hearts), Card.new(:four, :clubs), Card.new(:six, :clubs)])
             assert_equal("Full House", hand11.hand_rating)
             # p hand11.score
+            # p hand11.poker_hand_tie
             hand12 = Hand.new([Card.new(:five, :hearts), Card.new(:three, :clubs), Card.new(:five, :diamonds), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("Three of a Kind", hand12.hand_rating)
             # p hand12.score
@@ -176,10 +179,13 @@ class TddPokerHandClass2 < Minitest::Test
             # p hand33.score
             hand13 = Hand.new([Card.new(:queen, :spades), Card.new(:two, :clubs), Card.new(:four, :clubs), Card.new(:four, :diamonds), Card.new(:queen, :clubs)])
             assert_equal("Two Pair", hand13.hand_rating)
-            # p hand13.score
+            p hand13.score
+            p hand13.poker_hand_tie
+            p hand13.poker_hand_tie[0]
             hand14 = Hand.new([Card.new(:eight, :diamonds), Card.new(:seven, :hearts), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             assert_equal("Straight", hand14.hand_rating)
             # p hand14.score
+            # p hand14.poker_hand_tie
             hand15 = Hand.new([Card.new(:ace, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:seven, :clubs), Card.new(:six, :clubs)])
             assert_equal("Flush", hand15.hand_rating)
             # p hand15.score
@@ -215,35 +221,24 @@ class TddPokerHandClass2 < Minitest::Test
         def test_poker_hand_highest_card_for_tie
             # hand = Hand.new([Card.new(:seven, :spades), Card.new(:two, :clubs), Card.new(:seven, :clubs), Card.new(:eight, :spades), Card.new(:five, :clubs)])                                     
             # assert_equal("7", hand.poker_hand_tie)
-            hand2 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
-            assert_equal("2", hand2.poker_hand_tie)
-            hand3 = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-            assert_equal("2", hand3.poker_hand_tie)
-            hand4 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
-            assert_equal("2", hand4.poker_hand_tie) 
+            # hand2 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:eight, :diamonds)])
+            # assert_equal("2", hand2.poker_hand_tie)
+            # hand3 = Hand.new([Card.new(:two, :spades), Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            # assert_equal("2", hand3.poker_hand_tie)
+            # hand4 = Hand.new([Card.new(:two, :spades), Card.new(:two, :hearts), Card.new(:two, :clubs), Card.new(:eight, :spades), Card.new(:two, :diamonds)])
+            # assert_equal("2", hand4.poker_hand_tie) 
             # hand5 = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
             # assert_equal("8", hand5.poker_hand_tie)
-            hand7 = Hand.new([Card.new(:two, :diamonds), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            assert_equal("6", hand7.poker_hand_tie)
+            # hand7 = Hand.new([Card.new(:two, :diamonds), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            # assert_equal("6", hand7.poker_hand_tie)
             # hand8 = Hand.new([Card.new(:two, :clubs), Card.new(:nine, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
             # assert_equal("9", hand8.poker_hand_tie) 
-            hand9 = Hand.new([Card.new(:seven, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            assert_equal("7", hand9.poker_hand_tie)
+            # hand9 = Hand.new([Card.new(:seven, :clubs), Card.new(:three, :clubs), Card.new(:four, :clubs), Card.new(:five, :clubs), Card.new(:six, :clubs)])
+            # assert_equal("7", hand9.poker_hand_tie)
             # hand17 = Hand.new([Card.new(:three, :clubs), Card.new(:two, :clubs), Card.new(:five, :spades), Card.new(:jack, :clubs), Card.new(:six, :diamonds)])
             # assert_equal("J", hand17.poker_hand_tie)
         end
 
-        def test_two_pair_lower_value_for_tie
-            # hand5 = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
-            # assert_equal("2", hand5.two_pair_lower_val)
-        end
-
-        def test_if_all_cards_pair_two_pair_tie_next_value_compared
-            # hand5 = Hand.new([Card.new(:two, :spades), Card.new(:eight, :clubs), Card.new(:jack, :clubs), Card.new(:eight, :spades), Card.new(:two, :clubs)])
-            # assert_equal("J", hand5.last_card_tie)
-            # hand10 = Hand.new([Card.new(:two, :clubs), Card.new(:three, :hearts), Card.new(:six, :hearts), Card.new(:five, :clubs), Card.new(:six, :clubs)])
-            # assert_equal("5", hand10.last_card_tie)
-        end
-
+     
 
 end
