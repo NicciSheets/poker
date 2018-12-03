@@ -4,19 +4,30 @@ require_relative "poker_hand_class_2.rb"
 
 	
  	
-# comment this out for testing, when hard coding the @black and @white hands
+# comment lines 8-23 back in and comment out the same def above this for testing purposes
+	# def game_output
+	# 	@black 
+	# 	@white 
+	# end
+
+	# def winner()
+	# 	game_output = game_output
+	# 	compared = game_play(game_output)
+	# 	if compared == 1
+	# 		"Black Wins"
+	# 	elsif compared == (-1)
+	# 		"White Wins"
+	# 	else
+	# 		"Tie"
+	# 	end
+	# end
+
+	# comment this out for testing, when hard coding the @black and @white hands
    	def game_output
 		@black = Hand.deal()
 		@white = Hand.deal()
 		p "@black is #{@black.hand_rating} and #{@black.score} and @white is #{@white.hand_rating} and #{@white.score}"
 	end   	
-
-
-# comment this back in and comment out the same def above this for testing purposes
-	# def game_output
-	# 	@black 
-	# 	@white 
-	# end
 
 
 	def game_play(game_output)

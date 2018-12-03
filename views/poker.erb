@@ -6,12 +6,10 @@
     
 	<form method="post" action="/poker">
     <body>
-    	<% new_game = game_output %>
-    	<%= new_game %>
-    	<%= winner(new_game) %>
+
     	
-    	
+    	<%= "#{winner(game_output)}" %>
     	
     </body>
 	</form>
-</html>
+
