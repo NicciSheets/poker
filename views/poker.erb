@@ -6,17 +6,31 @@
     
 	<form method="post" action="/poker">
     <body>
+    <div class="who_won">	
     	<%= "#{winner(game_output)}" %><br>
-    	<%= "Black:" %>
-    		<% @black.cards_sorted.each do |v| %>
-    			<img class="card" width="80" height="100" src="/images/<%=v.value%><%=v.suit%>.png">
-    		<% end %> 
-    	<%= "#{@black.hand_rating}" %><br>
-    	<%= "White:" %>
-    		<% @white.cards_sorted.each do |v| %>
-            	<img class="card" width="80" height="100" src="/images/<%=v.value%><%=v.suit%>.png">
-       		<% end %>
-       	<%= "#{@white.hand_rating}" %>
+    </div>
+    <div class="hands">
+	    <div class="black_hand">	
+	    	<%= "Black:" %>
+	    	<div class="b_hand">
+	    		<% @black.cards_sorted.each do |v| %>
+	    			<img class="card" width="80" height="100" src="/images/<%=v.value%><%=v.suit%>.png">
+	    		<% end %>
+	    	</div> 
+	    	<%= "#{@black.hand_rating}" %>
+	    </div>
+	    <div class="white_hand">    	
+	    	<%= "White:" %>
+	    	<div class="w_white">
+	    		<% @white.cards_sorted.each do |v| %>
+	            	<img class="card" width="80" height="100" src="/images/<%=v.value%><%=v.suit%>.png">
+	       		<% end %>
+	       	</div>
+	       	<%= "#{@white.hand_rating}" %>
+	    </div>
+	</div>
+    <button class="btn refresh" value="Refresh Page" onClick="window.location.reload()">New Hand</button>
+    
     	
     	
    

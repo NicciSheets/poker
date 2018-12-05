@@ -15,17 +15,24 @@ table
 }
 
 .btn {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 0.4rem 1.1rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1rem;
-  margin: 0.5rem 0.5rem;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.refresh {
+  border-color: #d0433a;
+  color: #d0433a;;
+}
+
+.refresh:hover {
+  background-color: #d0433a;
+  color: white;
 }
 
 .title
@@ -40,9 +47,10 @@ table
   width: 7rem;
 }
 
-.errormsg
-{
-  color: lightcoral;
-  font-weight: bolder;
-  font-size: 1.1rem;
+.white_hand {
+  float: right;
+}
+
+.black_hand {
+  float: left;
 }

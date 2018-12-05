@@ -45,9 +45,9 @@ require_relative "poker_hand_class_2.rb"
 		game_output = game_output
 		compared = game_play(game_output)
 		if compared == 1
-			"Black Wins"
+			"Black Wins - #{@black.hand_rating}"
 		elsif compared == (-1)
-			"White Wins"
+			"White Wins - #{@white.hand_rating}"
 		else
 			"Tie"
 		end
